@@ -888,27 +888,27 @@ Result "kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureMultiplic
 
 # Run complete. Total time: 00:06:19
 
-Benchmark                                         (bitLength)  (longerBitLength)  Mode  Cnt       Score       Error  Units
-BigIntegerBenchmark.measureAddition                       128                N/A  avgt   10      56.722 ±    14.504  ns/op
-BigIntegerBenchmark.measureAddition                       256                N/A  avgt   10      55.011 ±     1.553  ns/op
-BigIntegerBenchmark.measureAddition                       512                N/A  avgt   10      73.085 ±     8.417  ns/op
-BigIntegerBenchmark.measureAddition                      1024                N/A  avgt   10     157.011 ±    65.366  ns/op
-BigIntegerBenchmark.measureAddition                      2048                N/A  avgt   10     181.168 ±    25.069  ns/op
-BigIntegerBenchmark.measureAddition                      4096                N/A  avgt   10     379.595 ±    71.529  ns/op
+Benchmark                                                 (bitLength)  (longerBitLength)  Mode  Cnt       Score       Error  Units
+BigIntegerBenchmark.measureAddition                               128                N/A  avgt   10      56.722 ±    14.504  ns/op
+BigIntegerBenchmark.measureAddition                               256                N/A  avgt   10      55.011 ±     1.553  ns/op
+BigIntegerBenchmark.measureAddition                               512                N/A  avgt   10      73.085 ±     8.417  ns/op
+BigIntegerBenchmark.measureAddition                              1024                N/A  avgt   10     157.011 ±    65.366  ns/op
+BigIntegerBenchmark.measureAddition                              2048                N/A  avgt   10     181.168 ±    25.069  ns/op
+BigIntegerBenchmark.measureAddition                              4096                N/A  avgt   10     379.595 ±    71.529  ns/op
 
-BigIntegerBenchmark.measureMultiplication                 128                N/A  avgt   10      52.064 ±     2.290  ns/op
-BigIntegerBenchmark.measureMultiplication                 256                N/A  avgt   10      90.305 ±     0.430  ns/op
-BigIntegerBenchmark.measureMultiplication                 512                N/A  avgt   10     249.804 ±    21.059  ns/op
-BigIntegerBenchmark.measureMultiplication                1024                N/A  avgt   10     834.443 ±    52.201  ns/op
-BigIntegerBenchmark.measureMultiplication                2048                N/A  avgt   10    3040.482 ±   105.641  ns/op
-BigIntegerBenchmark.measureMultiplication                4096                N/A  avgt   10   11112.783 ±   498.461  ns/op
+BigIntegerBenchmark.measureMultiplication                         128                N/A  avgt   10      52.064 ±     2.290  ns/op
+BigIntegerBenchmark.measureMultiplication                         256                N/A  avgt   10      90.305 ±     0.430  ns/op
+BigIntegerBenchmark.measureMultiplication                         512                N/A  avgt   10     249.804 ±    21.059  ns/op
+BigIntegerBenchmark.measureMultiplication                        1024                N/A  avgt   10     834.443 ±    52.201  ns/op
+BigIntegerBenchmark.measureMultiplication                        2048                N/A  avgt   10    3040.482 ±   105.641  ns/op
+BigIntegerBenchmark.measureMultiplication                        4096                N/A  avgt   10   11112.783 ±   498.461  ns/op
 
-BigIntegerBenchmark.measureDivision                       N/A                128  avgt   10     215.059 ±    18.130  ns/op
-BigIntegerBenchmark.measureDivision                       N/A                256  avgt   10     351.791 ±    42.552  ns/op
-BigIntegerBenchmark.measureDivision                       N/A                512  avgt   10     614.059 ±    27.722  ns/op
-BigIntegerBenchmark.measureDivision                       N/A               1024  avgt   10    1531.776 ±    17.203  ns/op
-BigIntegerBenchmark.measureDivision                       N/A               2048  avgt   10    4694.182 ±    75.591  ns/op
-BigIntegerBenchmark.measureDivision                       N/A               4096  avgt   10   17179.547 ±  1136.672  ns/op
+BigIntegerBenchmark.measureDivision                               N/A                128  avgt   10     215.059 ±    18.130  ns/op
+BigIntegerBenchmark.measureDivision                               N/A                256  avgt   10     351.791 ±    42.552  ns/op
+BigIntegerBenchmark.measureDivision                               N/A                512  avgt   10     614.059 ±    27.722  ns/op
+BigIntegerBenchmark.measureDivision                               N/A               1024  avgt   10    1531.776 ±    17.203  ns/op
+BigIntegerBenchmark.measureDivision                               N/A               2048  avgt   10    4694.182 ±    75.591  ns/op
+BigIntegerBenchmark.measureDivision                               N/A               4096  avgt   10   17179.547 ±  1136.672  ns/op
 
 BigIntegerBenchmark.measureFixedPowModularExponentiation          N/A                128  avgt   10    3978.234 ±    69.434  ns/op
 BigIntegerBenchmark.measureFixedPowModularExponentiation          N/A                256  avgt   10    7503.193 ±   811.701  ns/op
