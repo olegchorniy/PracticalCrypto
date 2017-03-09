@@ -1,0 +1,918 @@
+# JMH 1.17.5 (released 13 days ago)
+# VM version: JDK 1.8.0_72, VM 25.72-b15
+# VM invoker: C:\Program Files\Java\jdk1.8.0_72\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureAddition
+# Parameters: (bitLength = 128)
+
+# Run progress: 0.00% complete, ETA 00:06:00
+# Fork: 1 of 1
+# Warmup Iteration   1: 85.195 ns/op
+# Warmup Iteration   2: 77.540 ns/op
+# Warmup Iteration   3: 63.639 ns/op
+# Warmup Iteration   4: 74.187 ns/op
+# Warmup Iteration   5: 83.828 ns/op
+Iteration   1: 79.470 ns/op
+Iteration   2: 60.170 ns/op
+Iteration   3: 63.596 ns/op
+Iteration   4: 57.203 ns/op
+Iteration   5: 57.366 ns/op
+Iteration   6: 53.487 ns/op
+Iteration   7: 49.014 ns/op
+Iteration   8: 49.375 ns/op
+Iteration   9: 49.396 ns/op
+Iteration  10: 48.143 ns/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureAddition":
+  56.722 ±(99.9%) 14.504 ns/op [Average]
+  (min, avg, max) = (48.143, 56.722, 79.470), stdev = 9.594
+  CI (99.9%): [42.218, 71.226] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 13 days ago)
+# VM version: JDK 1.8.0_72, VM 25.72-b15
+# VM invoker: C:\Program Files\Java\jdk1.8.0_72\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureAddition
+# Parameters: (bitLength = 256)
+
+# Run progress: 4.17% complete, ETA 00:06:03
+# Fork: 1 of 1
+# Warmup Iteration   1: 97.118 ns/op
+# Warmup Iteration   2: 87.815 ns/op
+# Warmup Iteration   3: 64.094 ns/op
+# Warmup Iteration   4: 58.759 ns/op
+# Warmup Iteration   5: 54.427 ns/op
+Iteration   1: 57.082 ns/op
+Iteration   2: 54.952 ns/op
+Iteration   3: 53.907 ns/op
+Iteration   4: 54.533 ns/op
+Iteration   5: 56.625 ns/op
+Iteration   6: 54.669 ns/op
+Iteration   7: 55.035 ns/op
+Iteration   8: 54.594 ns/op
+Iteration   9: 54.408 ns/op
+Iteration  10: 54.303 ns/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureAddition":
+  55.011 ±(99.9%) 1.553 ns/op [Average]
+  (min, avg, max) = (53.907, 55.011, 57.082), stdev = 1.027
+  CI (99.9%): [53.457, 56.564] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 13 days ago)
+# VM version: JDK 1.8.0_72, VM 25.72-b15
+# VM invoker: C:\Program Files\Java\jdk1.8.0_72\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureAddition
+# Parameters: (bitLength = 512)
+
+# Run progress: 8.33% complete, ETA 00:05:48
+# Fork: 1 of 1
+# Warmup Iteration   1: 116.650 ns/op
+# Warmup Iteration   2: 92.978 ns/op
+# Warmup Iteration   3: 92.336 ns/op
+# Warmup Iteration   4: 70.843 ns/op
+# Warmup Iteration   5: 67.925 ns/op
+Iteration   1: 67.521 ns/op
+Iteration   2: 67.991 ns/op
+Iteration   3: 69.296 ns/op
+Iteration   4: 67.313 ns/op
+Iteration   5: 76.825 ns/op
+Iteration   6: 79.476 ns/op
+Iteration   7: 79.941 ns/op
+Iteration   8: 80.940 ns/op
+Iteration   9: 71.063 ns/op
+Iteration  10: 70.487 ns/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureAddition":
+  73.085 ±(99.9%) 8.417 ns/op [Average]
+  (min, avg, max) = (67.313, 73.085, 80.940), stdev = 5.567
+  CI (99.9%): [64.668, 81.502] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 13 days ago)
+# VM version: JDK 1.8.0_72, VM 25.72-b15
+# VM invoker: C:\Program Files\Java\jdk1.8.0_72\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureAddition
+# Parameters: (bitLength = 1024)
+
+# Run progress: 12.50% complete, ETA 00:05:32
+# Fork: 1 of 1
+# Warmup Iteration   1: 130.433 ns/op
+# Warmup Iteration   2: 119.950 ns/op
+# Warmup Iteration   3: 104.292 ns/op
+# Warmup Iteration   4: 98.017 ns/op
+# Warmup Iteration   5: 100.238 ns/op
+Iteration   1: 113.813 ns/op
+Iteration   2: 133.648 ns/op
+Iteration   3: 174.544 ns/op
+Iteration   4: 170.141 ns/op
+Iteration   5: 265.661 ns/op
+Iteration   6: 139.827 ns/op
+Iteration   7: 150.937 ns/op
+Iteration   8: 153.878 ns/op
+Iteration   9: 152.678 ns/op
+Iteration  10: 114.982 ns/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureAddition":
+  157.011 ±(99.9%) 65.366 ns/op [Average]
+  (min, avg, max) = (113.813, 157.011, 265.661), stdev = 43.235
+  CI (99.9%): [91.645, 222.377] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 13 days ago)
+# VM version: JDK 1.8.0_72, VM 25.72-b15
+# VM invoker: C:\Program Files\Java\jdk1.8.0_72\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureAddition
+# Parameters: (bitLength = 2048)
+
+# Run progress: 16.67% complete, ETA 00:05:17
+# Fork: 1 of 1
+# Warmup Iteration   1: 263.942 ns/op
+# Warmup Iteration   2: 223.851 ns/op
+# Warmup Iteration   3: 245.901 ns/op
+# Warmup Iteration   4: 188.629 ns/op
+# Warmup Iteration   5: 170.437 ns/op
+Iteration   1: 182.001 ns/op
+Iteration   2: 164.841 ns/op
+Iteration   3: 174.483 ns/op
+Iteration   4: 172.148 ns/op
+Iteration   5: 169.144 ns/op
+Iteration   6: 171.522 ns/op
+Iteration   7: 188.677 ns/op
+Iteration   8: 187.765 ns/op
+Iteration   9: 222.825 ns/op
+Iteration  10: 178.276 ns/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureAddition":
+  181.168 ±(99.9%) 25.069 ns/op [Average]
+  (min, avg, max) = (164.841, 181.168, 222.825), stdev = 16.582
+  CI (99.9%): [156.099, 206.237] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 13 days ago)
+# VM version: JDK 1.8.0_72, VM 25.72-b15
+# VM invoker: C:\Program Files\Java\jdk1.8.0_72\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureAddition
+# Parameters: (bitLength = 4096)
+
+# Run progress: 20.83% complete, ETA 00:05:02
+# Fork: 1 of 1
+# Warmup Iteration   1: 570.768 ns/op
+# Warmup Iteration   2: 429.940 ns/op
+# Warmup Iteration   3: 423.163 ns/op
+# Warmup Iteration   4: 356.363 ns/op
+# Warmup Iteration   5: 377.054 ns/op
+Iteration   1: 358.006 ns/op
+Iteration   2: 350.745 ns/op
+Iteration   3: 418.613 ns/op
+Iteration   4: 341.606 ns/op
+Iteration   5: 336.454 ns/op
+Iteration   6: 420.045 ns/op
+Iteration   7: 350.875 ns/op
+Iteration   8: 329.268 ns/op
+Iteration   9: 459.782 ns/op
+Iteration  10: 430.556 ns/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureAddition":
+  379.595 ±(99.9%) 71.529 ns/op [Average]
+  (min, avg, max) = (329.268, 379.595, 459.782), stdev = 47.312
+  CI (99.9%): [308.066, 451.124] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 13 days ago)
+# VM version: JDK 1.8.0_72, VM 25.72-b15
+# VM invoker: C:\Program Files\Java\jdk1.8.0_72\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureDivision
+# Parameters: (longerBitLength = 128)
+
+# Run progress: 25.00% complete, ETA 00:04:46
+# Fork: 1 of 1
+# Warmup Iteration   1: 451.603 ns/op
+# Warmup Iteration   2: 284.611 ns/op
+# Warmup Iteration   3: 270.169 ns/op
+# Warmup Iteration   4: 240.508 ns/op
+# Warmup Iteration   5: 246.328 ns/op
+Iteration   1: 206.008 ns/op
+Iteration   2: 208.801 ns/op
+Iteration   3: 229.667 ns/op
+Iteration   4: 222.187 ns/op
+Iteration   5: 207.197 ns/op
+Iteration   6: 238.552 ns/op
+Iteration   7: 220.662 ns/op
+Iteration   8: 207.300 ns/op
+Iteration   9: 203.441 ns/op
+Iteration  10: 206.775 ns/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureDivision":
+  215.059 ±(99.9%) 18.130 ns/op [Average]
+  (min, avg, max) = (203.441, 215.059, 238.552), stdev = 11.992
+  CI (99.9%): [196.929, 233.189] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 13 days ago)
+# VM version: JDK 1.8.0_72, VM 25.72-b15
+# VM invoker: C:\Program Files\Java\jdk1.8.0_72\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureDivision
+# Parameters: (longerBitLength = 256)
+
+# Run progress: 29.17% complete, ETA 00:04:30
+# Fork: 1 of 1
+# Warmup Iteration   1: 377.333 ns/op
+# Warmup Iteration   2: 355.590 ns/op
+# Warmup Iteration   3: 302.815 ns/op
+# Warmup Iteration   4: 306.159 ns/op
+# Warmup Iteration   5: 311.120 ns/op
+Iteration   1: 303.124 ns/op
+Iteration   2: 364.851 ns/op
+Iteration   3: 374.514 ns/op
+Iteration   4: 390.906 ns/op
+Iteration   5: 346.720 ns/op
+Iteration   6: 364.169 ns/op
+Iteration   7: 361.619 ns/op
+Iteration   8: 368.344 ns/op
+Iteration   9: 311.851 ns/op
+Iteration  10: 331.810 ns/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureDivision":
+  351.791 ±(99.9%) 42.552 ns/op [Average]
+  (min, avg, max) = (303.124, 351.791, 390.906), stdev = 28.145
+  CI (99.9%): [309.239, 394.342] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 13 days ago)
+# VM version: JDK 1.8.0_72, VM 25.72-b15
+# VM invoker: C:\Program Files\Java\jdk1.8.0_72\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureDivision
+# Parameters: (longerBitLength = 512)
+
+# Run progress: 33.33% complete, ETA 00:04:14
+# Fork: 1 of 1
+# Warmup Iteration   1: 714.571 ns/op
+# Warmup Iteration   2: 738.270 ns/op
+# Warmup Iteration   3: 920.581 ns/op
+# Warmup Iteration   4: 753.492 ns/op
+# Warmup Iteration   5: 605.743 ns/op
+Iteration   1: 596.695 ns/op
+Iteration   2: 610.808 ns/op
+Iteration   3: 621.197 ns/op
+Iteration   4: 606.355 ns/op
+Iteration   5: 609.905 ns/op
+Iteration   6: 608.456 ns/op
+Iteration   7: 619.307 ns/op
+Iteration   8: 661.286 ns/op
+Iteration   9: 609.001 ns/op
+Iteration  10: 597.583 ns/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureDivision":
+  614.059 ±(99.9%) 27.722 ns/op [Average]
+  (min, avg, max) = (596.695, 614.059, 661.286), stdev = 18.336
+  CI (99.9%): [586.337, 641.781] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 13 days ago)
+# VM version: JDK 1.8.0_72, VM 25.72-b15
+# VM invoker: C:\Program Files\Java\jdk1.8.0_72\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureDivision
+# Parameters: (longerBitLength = 1024)
+
+# Run progress: 37.50% complete, ETA 00:03:58
+# Fork: 1 of 1
+# Warmup Iteration   1: 1723.644 ns/op
+# Warmup Iteration   2: 1678.293 ns/op
+# Warmup Iteration   3: 1575.775 ns/op
+# Warmup Iteration   4: 1524.438 ns/op
+# Warmup Iteration   5: 1507.885 ns/op
+Iteration   1: 1532.646 ns/op
+Iteration   2: 1539.204 ns/op
+Iteration   3: 1523.440 ns/op
+Iteration   4: 1524.071 ns/op
+Iteration   5: 1521.215 ns/op
+Iteration   6: 1531.356 ns/op
+Iteration   7: 1524.119 ns/op
+Iteration   8: 1527.798 ns/op
+Iteration   9: 1559.869 ns/op
+Iteration  10: 1534.042 ns/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureDivision":
+  1531.776 ±(99.9%) 17.203 ns/op [Average]
+  (min, avg, max) = (1521.215, 1531.776, 1559.869), stdev = 11.379
+  CI (99.9%): [1514.573, 1548.979] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 13 days ago)
+# VM version: JDK 1.8.0_72, VM 25.72-b15
+# VM invoker: C:\Program Files\Java\jdk1.8.0_72\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureDivision
+# Parameters: (longerBitLength = 2048)
+
+# Run progress: 41.67% complete, ETA 00:03:42
+# Fork: 1 of 1
+# Warmup Iteration   1: 5050.052 ns/op
+# Warmup Iteration   2: 4651.480 ns/op
+# Warmup Iteration   3: 4625.551 ns/op
+# Warmup Iteration   4: 4695.105 ns/op
+# Warmup Iteration   5: 4726.370 ns/op
+Iteration   1: 4728.312 ns/op
+Iteration   2: 4634.881 ns/op
+Iteration   3: 4697.642 ns/op
+Iteration   4: 4777.986 ns/op
+Iteration   5: 4674.172 ns/op
+Iteration   6: 4650.372 ns/op
+Iteration   7: 4773.175 ns/op
+Iteration   8: 4673.752 ns/op
+Iteration   9: 4675.515 ns/op
+Iteration  10: 4656.013 ns/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureDivision":
+  4694.182 ±(99.9%) 75.591 ns/op [Average]
+  (min, avg, max) = (4634.881, 4694.182, 4777.986), stdev = 49.999
+  CI (99.9%): [4618.591, 4769.773] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 13 days ago)
+# VM version: JDK 1.8.0_72, VM 25.72-b15
+# VM invoker: C:\Program Files\Java\jdk1.8.0_72\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureDivision
+# Parameters: (longerBitLength = 4096)
+
+# Run progress: 45.83% complete, ETA 00:03:26
+# Fork: 1 of 1
+# Warmup Iteration   1: 18109.819 ns/op
+# Warmup Iteration   2: 17025.872 ns/op
+# Warmup Iteration   3: 16681.616 ns/op
+# Warmup Iteration   4: 16642.523 ns/op
+# Warmup Iteration   5: 16728.215 ns/op
+Iteration   1: 17215.698 ns/op
+Iteration   2: 17045.065 ns/op
+Iteration   3: 19109.876 ns/op
+Iteration   4: 17442.977 ns/op
+Iteration   5: 16494.240 ns/op
+Iteration   6: 16705.670 ns/op
+Iteration   7: 16581.135 ns/op
+Iteration   8: 16755.281 ns/op
+Iteration   9: 17357.574 ns/op
+Iteration  10: 17087.955 ns/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureDivision":
+  17179.547 ±(99.9%) 1136.672 ns/op [Average]
+  (min, avg, max) = (16494.240, 17179.547, 19109.876), stdev = 751.838
+  CI (99.9%): [16042.875, 18316.219] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 13 days ago)
+# VM version: JDK 1.8.0_72, VM 25.72-b15
+# VM invoker: C:\Program Files\Java\jdk1.8.0_72\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: measureFixedPowModularExponentiation
+# Parameters: (longerBitLength = 128)
+
+# Run progress: 50.00% complete, ETA 00:03:10
+# Fork: 1 of 1
+# Warmup Iteration   1: 6779.798 ns/op
+# Warmup Iteration   2: 5299.437 ns/op
+# Warmup Iteration   3: 4388.744 ns/op
+# Warmup Iteration   4: 3962.000 ns/op
+# Warmup Iteration   5: 4263.758 ns/op
+Iteration   1: 3963.732 ns/op
+Iteration   2: 3951.746 ns/op
+Iteration   3: 3993.072 ns/op
+Iteration   4: 3951.598 ns/op
+Iteration   5: 3944.742 ns/op
+Iteration   6: 3951.817 ns/op
+Iteration   7: 3945.495 ns/op
+Iteration   8: 4001.863 ns/op
+Iteration   9: 4095.144 ns/op
+Iteration  10: 3983.135 ns/op
+
+
+Result "measureFixedPowModularExponentiation":
+  3978.234 ±(99.9%) 69.434 ns/op [Average]
+  (min, avg, max) = (3944.742, 3978.234, 4095.144), stdev = 45.927
+  CI (99.9%): [3908.800, 4047.669] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 13 days ago)
+# VM version: JDK 1.8.0_72, VM 25.72-b15
+# VM invoker: C:\Program Files\Java\jdk1.8.0_72\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: measureFixedPowModularExponentiation
+# Parameters: (longerBitLength = 256)
+
+# Run progress: 54.17% complete, ETA 00:02:54
+# Fork: 1 of 1
+# Warmup Iteration   1: 7894.383 ns/op
+# Warmup Iteration   2: 7097.848 ns/op
+# Warmup Iteration   3: 7812.215 ns/op
+# Warmup Iteration   4: 7067.788 ns/op
+# Warmup Iteration   5: 7334.048 ns/op
+Iteration   1: 8143.526 ns/op
+Iteration   2: 8372.206 ns/op
+Iteration   3: 8128.338 ns/op
+Iteration   4: 7687.650 ns/op
+Iteration   5: 7075.240 ns/op
+Iteration   6: 7413.789 ns/op
+Iteration   7: 7073.329 ns/op
+Iteration   8: 7072.328 ns/op
+Iteration   9: 7037.276 ns/op
+Iteration  10: 7028.245 ns/op
+
+
+Result "measureFixedPowModularExponentiation":
+  7503.193 ±(99.9%) 811.701 ns/op [Average]
+  (min, avg, max) = (7028.245, 7503.193, 8372.206), stdev = 536.890
+  CI (99.9%): [6691.491, 8314.894] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 13 days ago)
+# VM version: JDK 1.8.0_72, VM 25.72-b15
+# VM invoker: C:\Program Files\Java\jdk1.8.0_72\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: measureFixedPowModularExponentiation
+# Parameters: (longerBitLength = 512)
+
+# Run progress: 58.33% complete, ETA 00:02:38
+# Fork: 1 of 1
+# Warmup Iteration   1: 20256.932 ns/op
+# Warmup Iteration   2: 18351.153 ns/op
+# Warmup Iteration   3: 18278.904 ns/op
+# Warmup Iteration   4: 18109.577 ns/op
+# Warmup Iteration   5: 18205.859 ns/op
+Iteration   1: 18452.349 ns/op
+Iteration   2: 18216.373 ns/op
+Iteration   3: 18260.891 ns/op
+Iteration   4: 19054.726 ns/op
+Iteration   5: 18214.167 ns/op
+Iteration   6: 18228.250 ns/op
+Iteration   7: 18191.625 ns/op
+Iteration   8: 18243.532 ns/op
+Iteration   9: 18252.740 ns/op
+Iteration  10: 18279.124 ns/op
+
+
+Result "measureFixedPowModularExponentiation":
+  18339.378 ±(99.9%) 395.516 ns/op [Average]
+  (min, avg, max) = (18191.625, 18339.378, 19054.726), stdev = 261.610
+  CI (99.9%): [17943.861, 18734.894] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 13 days ago)
+# VM version: JDK 1.8.0_72, VM 25.72-b15
+# VM invoker: C:\Program Files\Java\jdk1.8.0_72\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: measureFixedPowModularExponentiation
+# Parameters: (longerBitLength = 1024)
+
+# Run progress: 62.50% complete, ETA 00:02:22
+# Fork: 1 of 1
+# Warmup Iteration   1: 94112.325 ns/op
+# Warmup Iteration   2: 70329.025 ns/op
+# Warmup Iteration   3: 73691.934 ns/op
+# Warmup Iteration   4: 78211.470 ns/op
+# Warmup Iteration   5: 92569.096 ns/op
+Iteration   1: 83059.375 ns/op
+Iteration   2: 100683.506 ns/op
+Iteration   3: 84580.048 ns/op
+Iteration   4: 80289.132 ns/op
+Iteration   5: 80144.383 ns/op
+Iteration   6: 98401.329 ns/op
+Iteration   7: 107667.295 ns/op
+Iteration   8: 71140.337 ns/op
+Iteration   9: 70250.154 ns/op
+Iteration  10: 74683.025 ns/op
+
+
+Result "measureFixedPowModularExponentiation":
+  85089.858 ±(99.9%) 19551.103 ns/op [Average]
+  (min, avg, max) = (70250.154, 85089.858, 107667.295), stdev = 12931.844
+  CI (99.9%): [65538.755, 104640.962] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 13 days ago)
+# VM version: JDK 1.8.0_72, VM 25.72-b15
+# VM invoker: C:\Program Files\Java\jdk1.8.0_72\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: measureFixedPowModularExponentiation
+# Parameters: (longerBitLength = 2048)
+
+# Run progress: 66.67% complete, ETA 00:02:06
+# Fork: 1 of 1
+# Warmup Iteration   1: 334066.755 ns/op
+# Warmup Iteration   2: 267235.394 ns/op
+# Warmup Iteration   3: 272063.502 ns/op
+# Warmup Iteration   4: 244791.501 ns/op
+# Warmup Iteration   5: 216730.185 ns/op
+Iteration   1: 221682.818 ns/op
+Iteration   2: 227907.727 ns/op
+Iteration   3: 224402.078 ns/op
+Iteration   4: 234679.335 ns/op
+Iteration   5: 218194.657 ns/op
+Iteration   6: 219642.593 ns/op
+Iteration   7: 238728.064 ns/op
+Iteration   8: 228932.915 ns/op
+Iteration   9: 222602.383 ns/op
+Iteration  10: 216194.175 ns/op
+
+
+Result "measureFixedPowModularExponentiation":
+  225296.674 ±(99.9%) 10981.754 ns/op [Average]
+  (min, avg, max) = (216194.175, 225296.674, 238728.064), stdev = 7263.751
+  CI (99.9%): [214314.920, 236278.429] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 13 days ago)
+# VM version: JDK 1.8.0_72, VM 25.72-b15
+# VM invoker: C:\Program Files\Java\jdk1.8.0_72\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: measureFixedPowModularExponentiation
+# Parameters: (longerBitLength = 4096)
+
+# Run progress: 70.83% complete, ETA 00:01:50
+# Fork: 1 of 1
+# Warmup Iteration   1: 853445.863 ns/op
+# Warmup Iteration   2: 809935.702 ns/op
+# Warmup Iteration   3: 796772.178 ns/op
+# Warmup Iteration   4: 747827.471 ns/op
+# Warmup Iteration   5: 759116.156 ns/op
+Iteration   1: 749224.189 ns/op
+Iteration   2: 743924.231 ns/op
+Iteration   3: 748448.227 ns/op
+Iteration   4: 761553.330 ns/op
+Iteration   5: 747496.198 ns/op
+Iteration   6: 750365.606 ns/op
+Iteration   7: 748578.514 ns/op
+Iteration   8: 747923.135 ns/op
+Iteration   9: 741818.721 ns/op
+Iteration  10: 752518.642 ns/op
+
+
+Result "measureFixedPowModularExponentiation":
+  749185.079 ±(99.9%) 8012.319 ns/op [Average]
+  (min, avg, max) = (741818.721, 749185.079, 761553.330), stdev = 5299.653
+  CI (99.9%): [741172.760, 757197.398] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 13 days ago)
+# VM version: JDK 1.8.0_72, VM 25.72-b15
+# VM invoker: C:\Program Files\Java\jdk1.8.0_72\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureMultiplication
+# Parameters: (bitLength = 128)
+
+# Run progress: 75.00% complete, ETA 00:01:34
+# Fork: 1 of 1
+# Warmup Iteration   1: 61.522 ns/op
+# Warmup Iteration   2: 60.752 ns/op
+# Warmup Iteration   3: 51.422 ns/op
+# Warmup Iteration   4: 50.257 ns/op
+# Warmup Iteration   5: 52.488 ns/op
+Iteration   1: 55.443 ns/op
+Iteration   2: 52.601 ns/op
+Iteration   3: 51.652 ns/op
+Iteration   4: 50.376 ns/op
+Iteration   5: 51.037 ns/op
+Iteration   6: 50.786 ns/op
+Iteration   7: 52.169 ns/op
+Iteration   8: 50.777 ns/op
+Iteration   9: 53.200 ns/op
+Iteration  10: 52.597 ns/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureMultiplication":
+  52.064 ±(99.9%) 2.290 ns/op [Average]
+  (min, avg, max) = (50.376, 52.064, 55.443), stdev = 1.515
+  CI (99.9%): [49.774, 54.354] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 13 days ago)
+# VM version: JDK 1.8.0_72, VM 25.72-b15
+# VM invoker: C:\Program Files\Java\jdk1.8.0_72\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureMultiplication
+# Parameters: (bitLength = 256)
+
+# Run progress: 79.17% complete, ETA 00:01:19
+# Fork: 1 of 1
+# Warmup Iteration   1: 108.081 ns/op
+# Warmup Iteration   2: 117.826 ns/op
+# Warmup Iteration   3: 89.818 ns/op
+# Warmup Iteration   4: 90.561 ns/op
+# Warmup Iteration   5: 89.533 ns/op
+Iteration   1: 90.327 ns/op
+Iteration   2: 90.035 ns/op
+Iteration   3: 90.539 ns/op
+Iteration   4: 89.924 ns/op
+Iteration   5: 90.548 ns/op
+Iteration   6: 90.007 ns/op
+Iteration   7: 90.333 ns/op
+Iteration   8: 90.336 ns/op
+Iteration   9: 90.840 ns/op
+Iteration  10: 90.164 ns/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureMultiplication":
+  90.305 ±(99.9%) 0.430 ns/op [Average]
+  (min, avg, max) = (89.924, 90.305, 90.840), stdev = 0.285
+  CI (99.9%): [89.875, 90.736] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 13 days ago)
+# VM version: JDK 1.8.0_72, VM 25.72-b15
+# VM invoker: C:\Program Files\Java\jdk1.8.0_72\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureMultiplication
+# Parameters: (bitLength = 512)
+
+# Run progress: 83.33% complete, ETA 00:01:03
+# Fork: 1 of 1
+# Warmup Iteration   1: 279.279 ns/op
+# Warmup Iteration   2: 279.067 ns/op
+# Warmup Iteration   3: 261.698 ns/op
+# Warmup Iteration   4: 243.115 ns/op
+# Warmup Iteration   5: 238.650 ns/op
+Iteration   1: 241.160 ns/op
+Iteration   2: 283.571 ns/op
+Iteration   3: 263.309 ns/op
+Iteration   4: 245.149 ns/op
+Iteration   5: 241.514 ns/op
+Iteration   6: 253.989 ns/op
+Iteration   7: 245.414 ns/op
+Iteration   8: 241.082 ns/op
+Iteration   9: 239.812 ns/op
+Iteration  10: 243.040 ns/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureMultiplication":
+  249.804 ±(99.9%) 21.059 ns/op [Average]
+  (min, avg, max) = (239.812, 249.804, 283.571), stdev = 13.929
+  CI (99.9%): [228.745, 270.863] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 13 days ago)
+# VM version: JDK 1.8.0_72, VM 25.72-b15
+# VM invoker: C:\Program Files\Java\jdk1.8.0_72\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureMultiplication
+# Parameters: (bitLength = 1024)
+
+# Run progress: 87.50% complete, ETA 00:00:47
+# Fork: 1 of 1
+# Warmup Iteration   1: 867.139 ns/op
+# Warmup Iteration   2: 837.782 ns/op
+# Warmup Iteration   3: 817.818 ns/op
+# Warmup Iteration   4: 800.995 ns/op
+# Warmup Iteration   5: 811.766 ns/op
+Iteration   1: 815.563 ns/op
+Iteration   2: 817.598 ns/op
+Iteration   3: 811.388 ns/op
+Iteration   4: 816.381 ns/op
+Iteration   5: 840.338 ns/op
+Iteration   6: 869.838 ns/op
+Iteration   7: 918.111 ns/op
+Iteration   8: 828.770 ns/op
+Iteration   9: 815.543 ns/op
+Iteration  10: 810.902 ns/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureMultiplication":
+  834.443 ±(99.9%) 52.201 ns/op [Average]
+  (min, avg, max) = (810.902, 834.443, 918.111), stdev = 34.528
+  CI (99.9%): [782.242, 886.644] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 13 days ago)
+# VM version: JDK 1.8.0_72, VM 25.72-b15
+# VM invoker: C:\Program Files\Java\jdk1.8.0_72\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureMultiplication
+# Parameters: (bitLength = 2048)
+
+# Run progress: 91.67% complete, ETA 00:00:31
+# Fork: 1 of 1
+# Warmup Iteration   1: 3285.946 ns/op
+# Warmup Iteration   2: 3089.139 ns/op
+# Warmup Iteration   3: 3045.179 ns/op
+# Warmup Iteration   4: 3032.331 ns/op
+# Warmup Iteration   5: 3055.755 ns/op
+Iteration   1: 3016.891 ns/op
+Iteration   2: 3036.909 ns/op
+Iteration   3: 3024.329 ns/op
+Iteration   4: 3036.081 ns/op
+Iteration   5: 3044.488 ns/op
+Iteration   6: 3033.726 ns/op
+Iteration   7: 3015.981 ns/op
+Iteration   8: 3229.905 ns/op
+Iteration   9: 2983.422 ns/op
+Iteration  10: 2983.087 ns/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureMultiplication":
+  3040.482 ±(99.9%) 105.641 ns/op [Average]
+  (min, avg, max) = (2983.087, 3040.482, 3229.905), stdev = 69.875
+  CI (99.9%): [2934.841, 3146.123] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 13 days ago)
+# VM version: JDK 1.8.0_72, VM 25.72-b15
+# VM invoker: C:\Program Files\Java\jdk1.8.0_72\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureMultiplication
+# Parameters: (bitLength = 4096)
+
+# Run progress: 95.83% complete, ETA 00:00:15
+# Fork: 1 of 1
+# Warmup Iteration   1: 41675.681 ns/op
+# Warmup Iteration   2: 19551.778 ns/op
+# Warmup Iteration   3: 12442.854 ns/op
+# Warmup Iteration   4: 12100.857 ns/op
+# Warmup Iteration   5: 12178.004 ns/op
+Iteration   1: 12044.033 ns/op
+Iteration   2: 11068.763 ns/op
+Iteration   3: 10994.546 ns/op
+Iteration   4: 11003.921 ns/op
+Iteration   5: 11072.800 ns/op
+Iteration   6: 11019.978 ns/op
+Iteration   7: 10964.439 ns/op
+Iteration   8: 10949.991 ns/op
+Iteration   9: 10979.805 ns/op
+Iteration  10: 11029.554 ns/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.bigint.BigIntegerBenchmark.measureMultiplication":
+  11112.783 ±(99.9%) 498.461 ns/op [Average]
+  (min, avg, max) = (10949.991, 11112.783, 12044.033), stdev = 329.701
+  CI (99.9%): [10614.322, 11611.243] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:06:19
+
+Benchmark                                         (bitLength)  (longerBitLength)  Mode  Cnt       Score       Error  Units
+BigIntegerBenchmark.measureAddition                       128                N/A  avgt   10      56.722 ±    14.504  ns/op
+BigIntegerBenchmark.measureAddition                       256                N/A  avgt   10      55.011 ±     1.553  ns/op
+BigIntegerBenchmark.measureAddition                       512                N/A  avgt   10      73.085 ±     8.417  ns/op
+BigIntegerBenchmark.measureAddition                      1024                N/A  avgt   10     157.011 ±    65.366  ns/op
+BigIntegerBenchmark.measureAddition                      2048                N/A  avgt   10     181.168 ±    25.069  ns/op
+BigIntegerBenchmark.measureAddition                      4096                N/A  avgt   10     379.595 ±    71.529  ns/op
+
+BigIntegerBenchmark.measureMultiplication                 128                N/A  avgt   10      52.064 ±     2.290  ns/op
+BigIntegerBenchmark.measureMultiplication                 256                N/A  avgt   10      90.305 ±     0.430  ns/op
+BigIntegerBenchmark.measureMultiplication                 512                N/A  avgt   10     249.804 ±    21.059  ns/op
+BigIntegerBenchmark.measureMultiplication                1024                N/A  avgt   10     834.443 ±    52.201  ns/op
+BigIntegerBenchmark.measureMultiplication                2048                N/A  avgt   10    3040.482 ±   105.641  ns/op
+BigIntegerBenchmark.measureMultiplication                4096                N/A  avgt   10   11112.783 ±   498.461  ns/op
+
+BigIntegerBenchmark.measureDivision                       N/A                128  avgt   10     215.059 ±    18.130  ns/op
+BigIntegerBenchmark.measureDivision                       N/A                256  avgt   10     351.791 ±    42.552  ns/op
+BigIntegerBenchmark.measureDivision                       N/A                512  avgt   10     614.059 ±    27.722  ns/op
+BigIntegerBenchmark.measureDivision                       N/A               1024  avgt   10    1531.776 ±    17.203  ns/op
+BigIntegerBenchmark.measureDivision                       N/A               2048  avgt   10    4694.182 ±    75.591  ns/op
+BigIntegerBenchmark.measureDivision                       N/A               4096  avgt   10   17179.547 ±  1136.672  ns/op
+
+BigIntegerBenchmark.measureFixedPowModularExponentiation          N/A                128  avgt   10    3978.234 ±    69.434  ns/op
+BigIntegerBenchmark.measureFixedPowModularExponentiation          N/A                256  avgt   10    7503.193 ±   811.701  ns/op
+BigIntegerBenchmark.measureFixedPowModularExponentiation          N/A                512  avgt   10   18339.378 ±   395.516  ns/op
+BigIntegerBenchmark.measureFixedPowModularExponentiation          N/A               1024  avgt   10   85089.858 ± 19551.103  ns/op
+BigIntegerBenchmark.measureFixedPowModularExponentiation          N/A               2048  avgt   10  225296.674 ± 10981.754  ns/op
+BigIntegerBenchmark.measureFixedPowModularExponentiation          N/A               4096  avgt   10  749185.079 ±  8012.319  ns/op
