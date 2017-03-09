@@ -1,12 +1,14 @@
 package kpi.ipt.labs.practicalcrypto.primes;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 import static java.math.BigInteger.ONE;
 import static java.math.BigInteger.ZERO;
 
-//TODO: add sieve for prime finding, cleanup the code
 public class MaurerAlgorithm {
 
     public static final int TRIAL_DIVISION_THRESHOLD = 20;
@@ -39,6 +41,10 @@ public class MaurerAlgorithm {
         }
 
         double B = C * bitLength * bitLength;
+        if ((long) B > Integer.MAX_VALUE) {
+            throw new IllegalArgumentException("Requested bit length exceeds supported range");
+        }
+
         double r;
         if (bitLength > DOUBLE_M) {
             do {
@@ -60,13 +66,15 @@ public class MaurerAlgorithm {
         BigInteger n = null;
 
         print("Start loop ...");
+        List<BigInteger> primes = eratosthenesSieve((int) B);
+
         while (!success) {
             // R is random in the interval [I + 1, 2I]
             BigInteger R = I.add(ONE).add(boundedRandom(I, random));
             //n = 2Rq + 1
             n = R.multiply(q).shiftLeft(1).add(ONE);
 
-            if (trialDivision(n, (long) B)) {
+            if (trialDivision(n, primes)) {
                 //a is random in the interval [2, n - 2] -> 2 + [0, n - 3)
                 BigInteger a = TWO.add(boundedRandom(n.subtract(THREE), random));
                 //b = a^(n - 1) mod n
@@ -117,14 +125,9 @@ public class MaurerAlgorithm {
         throw new IllegalStateException("According to the Bertrand's postulate we should never reach this point");
     }
 
-    private static boolean trialDivision(BigInteger testedNumber, long bound) {
-        //check whether testedNumber is divisible by 2
-        if (!testedNumber.testBit(0)) {
-            return false;
-        }
-
-        for (int d = 3; d < bound; d += 2) {
-            if (testedNumber.mod(BigInteger.valueOf(d)).equals(ZERO)) {
+    private static boolean trialDivision(BigInteger testedNumber, List<BigInteger> primeDivisors) {
+        for (BigInteger primeDivisor : primeDivisors) {
+            if (testedNumber.mod(primeDivisor).equals(ZERO)) {
                 return false;
             }
         }
@@ -141,6 +144,32 @@ public class MaurerAlgorithm {
         } while (b.compareTo(bound) >= 0);
 
         return b;
+    }
+
+    private static List<BigInteger> eratosthenesSieve(int boundExclusive) {
+        boolean[] candidates = new boolean[boundExclusive];
+
+        candidates[0] = candidates[1] = false;
+        Arrays.fill(candidates, true);
+
+        int rootSqrt = (int) Math.sqrt(boundExclusive);
+
+        for (int i = 2; i <= rootSqrt; i++) {
+            if (candidates[i]) {
+                for (int j = i * i; j < boundExclusive; j += i) {
+                    candidates[j] = false;
+                }
+            }
+        }
+
+        List<BigInteger> primes = new ArrayList<>();
+        for (int i = 2; i < boundExclusive; i++) {
+            if (candidates[i]) {
+                primes.add(BigInteger.valueOf(i));
+            }
+        }
+
+        return primes;
     }
 
     private void print(String message) {
