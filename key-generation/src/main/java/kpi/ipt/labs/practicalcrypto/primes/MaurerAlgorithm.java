@@ -45,7 +45,6 @@ public class MaurerAlgorithm {
     private static final BigInteger THREE = BigInteger.valueOf(3);
 
     private final Random random;
-    private int recursionLevel = -1;
 
     public MaurerAlgorithm(Random random) {
         this.random = random;
@@ -68,19 +67,14 @@ public class MaurerAlgorithm {
     }
 
     private BigInteger provablePrimeRecursive(final int bitLength, List<BigInteger> primes) {
-        recursionLevel++;
-
-        print("Find prime of length: " + bitLength);
 
         if (bitLength <= TRIAL_DIVISION_THRESHOLD) {
-            print("Return small prime: " + bitLength);
-
-            recursionLevel--;
             return SMALL_PRIMES[bitLength];
         }
 
         BigInteger B = BigInteger.valueOf((int) (C * bitLength * bitLength));
 
+        // choose appropriate value of r
         double r;
         if (bitLength > DOUBLE_M) {
             do {
@@ -90,49 +84,35 @@ public class MaurerAlgorithm {
             r = 0.5;
         }
 
-        print("r = " + r);
-
-        //recursive call
-        BigInteger q = provablePrimeRecursive((int) (r * bitLength) + 1, primes);
+        // recursive call
+        BigInteger q = provablePrimeRecursive((int) (r * bitLength + 1), primes);
 
         // floor( 2^(k - 1) / (2 * q) )
         BigInteger I = ONE.shiftLeft(bitLength - 1).divide(q.shiftLeft(1));
 
-        boolean success = false;
-        BigInteger n = null;
-
-        print("Start loop ...");
-
-        while (!success) {
+        while (true) {
             // R is random in the interval [I + 1, 2I]
             BigInteger R = I.add(ONE).add(boundedRandom(I, random));
-            //n = 2Rq + 1
-            n = R.multiply(q).shiftLeft(1).add(ONE);
+            // n = 2Rq + 1
+            BigInteger n = R.multiply(q).shiftLeft(1).add(ONE);
 
             if (trialDivision(n, primes, B)) {
-                //a is random in the interval [2, n - 2] -> 2 + [0, n - 3)
+                // a is random in the interval [2, n - 2]
                 BigInteger a = TWO.add(boundedRandom(n.subtract(THREE), random));
-                //b = a^(n - 1) mod n
+                // b = a^(n - 1) mod n
                 BigInteger b = a.modPow(n.subtract(ONE), n);
 
                 if (b.equals(ONE)) {
-                    print("b equals 1");
+                    // b = a^2R mod n
                     b = a.modPow(R.shiftLeft(1), n);
                     BigInteger d = n.gcd(b.subtract(ONE));
 
                     if (d.equals(ONE)) {
-                        success = true;
-                    } else {
-                        print("d = " + d);
+                        return n;
                     }
                 }
             }
         }
-
-        print("Found provable prime: " + n);
-
-        recursionLevel--;
-        return n;
     }
 
     private static boolean trialDivision(BigInteger testedNumber, List<BigInteger> primeDivisors, BigInteger bound) {
@@ -185,15 +165,5 @@ public class MaurerAlgorithm {
         }
 
         return primes;
-    }
-
-    private void print(String message) {
-        for (int i = 0; i < recursionLevel; i++) {
-            if (i == recursionLevel - 1)
-                System.out.print("|--");
-            else
-                System.out.print("|  ");
-        }
-        System.out.println(message);
     }
 }
