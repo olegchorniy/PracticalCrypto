@@ -11,12 +11,36 @@ import static java.math.BigInteger.ZERO;
 
 public class MaurerAlgorithm {
 
-    public static final int TRIAL_DIVISION_THRESHOLD = 20;
+    private static final int TRIAL_DIVISION_THRESHOLD = 20;
 
-    //Maurer algorithm constants
-    private static final double C = 0.1;
+    private static final BigInteger[] SMALL_PRIMES = {
+            null, null,
+            BigInteger.valueOf(3),
+            BigInteger.valueOf(5),
+            BigInteger.valueOf(11),
+            BigInteger.valueOf(17),
+            BigInteger.valueOf(37),
+            BigInteger.valueOf(67),
+            BigInteger.valueOf(131),
+            BigInteger.valueOf(257),
+            BigInteger.valueOf(521),
+            BigInteger.valueOf(1031),
+            BigInteger.valueOf(2053),
+            BigInteger.valueOf(4099),
+            BigInteger.valueOf(8209),
+            BigInteger.valueOf(16411),
+            BigInteger.valueOf(32771),
+            BigInteger.valueOf(65537),
+            BigInteger.valueOf(131101),
+            BigInteger.valueOf(262147),
+            BigInteger.valueOf(524309)
+    };
+
+    // Algorithm constants
+    private static final double C = 0.2;
     private static final int M = 20;
     private static final int DOUBLE_M = M * 2;
+
     private static final BigInteger TWO = BigInteger.valueOf(2);
     private static final BigInteger THREE = BigInteger.valueOf(3);
 
@@ -27,23 +51,35 @@ public class MaurerAlgorithm {
         this.random = random;
     }
 
-    public BigInteger provablePrime(final int bitLength) {
-        recursionLevel++;
-
-        print("Find prime of length: " + bitLength);
-
-        if (bitLength <= TRIAL_DIVISION_THRESHOLD) {
-            print("fallback to trivial division: " + bitLength);
-
-            BigInteger result = trialDivisionPrime(bitLength);
-            recursionLevel--;
-            return result;
+    public BigInteger generatePrime(final int bitLength) {
+        if (bitLength < 2) {
+            throw new IllegalArgumentException("Bit length must be greater equal than 2");
         }
 
         double B = C * bitLength * bitLength;
         if ((long) B > Integer.MAX_VALUE) {
             throw new IllegalArgumentException("Requested bit length exceeds supported range");
         }
+
+        //pre-compute primes necessary for trial division
+        List<BigInteger> primes = eratosthenesSieve((int) B);
+
+        return provablePrimeRecursive(bitLength, primes);
+    }
+
+    private BigInteger provablePrimeRecursive(final int bitLength, List<BigInteger> primes) {
+        recursionLevel++;
+
+        print("Find prime of length: " + bitLength);
+
+        if (bitLength <= TRIAL_DIVISION_THRESHOLD) {
+            print("Return small prime: " + bitLength);
+
+            recursionLevel--;
+            return SMALL_PRIMES[bitLength];
+        }
+
+        BigInteger B = BigInteger.valueOf((int) (C * bitLength * bitLength));
 
         double r;
         if (bitLength > DOUBLE_M) {
@@ -57,7 +93,7 @@ public class MaurerAlgorithm {
         print("r = " + r);
 
         //recursive call
-        BigInteger q = provablePrime((int) (r * bitLength) + 1);
+        BigInteger q = provablePrimeRecursive((int) (r * bitLength) + 1, primes);
 
         // floor( 2^(k - 1) / (2 * q) )
         BigInteger I = ONE.shiftLeft(bitLength - 1).divide(q.shiftLeft(1));
@@ -66,7 +102,6 @@ public class MaurerAlgorithm {
         BigInteger n = null;
 
         print("Start loop ...");
-        List<BigInteger> primes = eratosthenesSieve((int) B);
 
         while (!success) {
             // R is random in the interval [I + 1, 2I]
@@ -74,7 +109,7 @@ public class MaurerAlgorithm {
             //n = 2Rq + 1
             n = R.multiply(q).shiftLeft(1).add(ONE);
 
-            if (trialDivision(n, primes)) {
+            if (trialDivision(n, primes, B)) {
                 //a is random in the interval [2, n - 2] -> 2 + [0, n - 3)
                 BigInteger a = TWO.add(boundedRandom(n.subtract(THREE), random));
                 //b = a^(n - 1) mod n
@@ -100,33 +135,13 @@ public class MaurerAlgorithm {
         return n;
     }
 
-    private BigInteger trialDivisionPrime(int bitLength) {
-        //2^(bitLength - 1) + 1
-        int candidate = (1 << (bitLength - 1)) + 1;
+    private static boolean trialDivision(BigInteger testedNumber, List<BigInteger> primeDivisors, BigInteger bound) {
+        for (BigInteger primeDivisor : primeDivisors) {
 
-        //2^(bitLength) - 1
-        final int upperBound = (1 << bitLength) - 1;
-
-        primeSearchLoop:
-        while (candidate <= upperBound) {
-            int divisorsBound = ((int) Math.sqrt(candidate)) + 1;
-
-            for (int d = 3; d <= divisorsBound; d += 2) {
-                if (candidate % d == 0) {
-                    candidate += 2;
-                    continue primeSearchLoop;
-                }
+            if (primeDivisor.compareTo(bound) > 0) {
+                break;
             }
 
-            print("Found by trial division prime: " + candidate);
-            return BigInteger.valueOf(candidate);
-        }
-
-        throw new IllegalStateException("According to the Bertrand's postulate we should never reach this point");
-    }
-
-    private static boolean trialDivision(BigInteger testedNumber, List<BigInteger> primeDivisors) {
-        for (BigInteger primeDivisor : primeDivisors) {
             if (testedNumber.mod(primeDivisor).equals(ZERO)) {
                 return false;
             }

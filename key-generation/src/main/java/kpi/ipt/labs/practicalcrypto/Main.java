@@ -10,9 +10,10 @@ public class Main {
 
     public static void main(String[] args) {
         Random random = new BMRandom(Constants.BM_G, Constants.BM_P);
-        BigInteger p = new MaurerAlgorithm(random).provablePrime(1024);
+        MaurerAlgorithm maurerAlgorithm = new MaurerAlgorithm(new Random());
 
-        System.out.println(p);
-        System.out.println("Really prime: " + p.isProbablePrime(100));
+        BigInteger prime = maurerAlgorithm.generatePrime(1024);
+        System.out.println(prime);
+        System.out.println(prime.isProbablePrime(100));
     }
 }

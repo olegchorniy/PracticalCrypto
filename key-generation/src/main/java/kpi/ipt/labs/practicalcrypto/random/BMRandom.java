@@ -28,7 +28,7 @@ public class BMRandom extends Random {
     @Override
     public void nextBytes(byte[] bytes) {
         for (int i = 0; i < bytes.length; i++) {
-            bytes[i] = bmGenerator.nextByte();
+            bytes[i] = (byte) next(8);
         }
     }
 }

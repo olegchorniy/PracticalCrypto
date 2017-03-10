@@ -18,16 +18,6 @@ public class BMBitGenerator extends AbstractBM {
         return nextValue().compareTo(halfP) < 0 ? 1 : 0;
     }
 
-    public byte nextByte() {
-        byte next = 0;
-
-        for (int i = 0; i < 8; i++) {
-            next |= (nextBit() << (7 - i));
-        }
-
-        return next;
-    }
-
     @Override
     public String toString() {
         return "BM Bit: " + super.toString();
