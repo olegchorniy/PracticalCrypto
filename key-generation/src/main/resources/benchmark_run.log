@@ -1,0 +1,308 @@
+# JMH 1.17.5 (released 15 days ago)
+# VM version: JDK 1.8.0_73, VM 25.73-b02
+# VM invoker: C:\Program Files\Java\jdk1.8.0_73\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.benchmarks.PrimeGenerationBenchmark.measureProbablePrime
+# Parameters: (bitLength = 256)
+
+# Run progress: 0,00% complete, ETA 00:02:00
+# Fork: 1 of 1
+# Warmup Iteration   1: 6,522 ms/op
+# Warmup Iteration   2: 4,993 ms/op
+# Warmup Iteration   3: 4,683 ms/op
+# Warmup Iteration   4: 4,402 ms/op
+# Warmup Iteration   5: 4,403 ms/op
+Iteration   1: 4,558 ms/op
+Iteration   2: 4,390 ms/op
+Iteration   3: 4,792 ms/op
+Iteration   4: 4,605 ms/op
+Iteration   5: 4,467 ms/op
+Iteration   6: 4,334 ms/op
+Iteration   7: 4,393 ms/op
+Iteration   8: 4,205 ms/op
+Iteration   9: 4,829 ms/op
+Iteration  10: 4,437 ms/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.benchmarks.PrimeGenerationBenchmark.measureProbablePrime":
+  4,501 ?(99.9%) 0,299 ms/op [Average]
+  (min, avg, max) = (4,205, 4,501, 4,829), stdev = 0,197
+  CI (99.9%): [4,203, 4,800] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 15 days ago)
+# VM version: JDK 1.8.0_73, VM 25.73-b02
+# VM invoker: C:\Program Files\Java\jdk1.8.0_73\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.benchmarks.PrimeGenerationBenchmark.measureProbablePrime
+# Parameters: (bitLength = 512)
+
+# Run progress: 12,50% complete, ETA 00:01:48
+# Fork: 1 of 1
+# Warmup Iteration   1: 35,361 ms/op
+# Warmup Iteration   2: 21,848 ms/op
+# Warmup Iteration   3: 28,678 ms/op
+# Warmup Iteration   4: 21,947 ms/op
+# Warmup Iteration   5: 21,896 ms/op
+Iteration   1: 21,922 ms/op
+Iteration   2: 19,683 ms/op
+Iteration   3: 25,248 ms/op
+Iteration   4: 23,928 ms/op
+Iteration   5: 21,128 ms/op
+Iteration   6: 21,411 ms/op
+Iteration   7: 21,562 ms/op
+Iteration   8: 22,839 ms/op
+Iteration   9: 23,620 ms/op
+Iteration  10: 20,188 ms/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.benchmarks.PrimeGenerationBenchmark.measureProbablePrime":
+  22,153 ?(99.9%) 2,634 ms/op [Average]
+  (min, avg, max) = (19,683, 22,153, 25,248), stdev = 1,742
+  CI (99.9%): [19,519, 24,787] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 15 days ago)
+# VM version: JDK 1.8.0_73, VM 25.73-b02
+# VM invoker: C:\Program Files\Java\jdk1.8.0_73\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.benchmarks.PrimeGenerationBenchmark.measureProbablePrime
+# Parameters: (bitLength = 1024)
+
+# Run progress: 25,00% complete, ETA 00:01:34
+# Fork: 1 of 1
+# Warmup Iteration   1: 304,977 ms/op
+# Warmup Iteration   2: 276,759 ms/op
+# Warmup Iteration   3: 346,153 ms/op
+# Warmup Iteration   4: 170,505 ms/op
+# Warmup Iteration   5: 244,917 ms/op
+Iteration   1: 147,771 ms/op
+Iteration   2: 407,434 ms/op
+Iteration   3: 160,673 ms/op
+Iteration   4: 196,328 ms/op
+Iteration   5: 215,269 ms/op
+Iteration   6: 200,490 ms/op
+Iteration   7: 162,085 ms/op
+Iteration   8: 226,051 ms/op
+Iteration   9: 225,039 ms/op
+Iteration  10: 164,508 ms/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.benchmarks.PrimeGenerationBenchmark.measureProbablePrime":
+  210,565 ?(99.9%) 113,178 ms/op [Average]
+  (min, avg, max) = (147,771, 210,565, 407,434), stdev = 74,861
+  CI (99.9%): [97,386, 323,743] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 15 days ago)
+# VM version: JDK 1.8.0_73, VM 25.73-b02
+# VM invoker: C:\Program Files\Java\jdk1.8.0_73\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.benchmarks.PrimeGenerationBenchmark.measureProbablePrime
+# Parameters: (bitLength = 2048)
+
+# Run progress: 37,50% complete, ETA 00:01:22
+# Fork: 1 of 1
+# Warmup Iteration   1: 1171,326 ms/op
+# Warmup Iteration   2: 3669,849 ms/op
+# Warmup Iteration   3: 1332,016 ms/op
+# Warmup Iteration   4: 1630,664 ms/op
+# Warmup Iteration   5: 1309,941 ms/op
+Iteration   1: 1093,153 ms/op
+Iteration   2: 3377,239 ms/op
+Iteration   3: 531,595 ms/op
+Iteration   4: 1955,853 ms/op
+Iteration   5: 5211,231 ms/op
+Iteration   6: 1609,664 ms/op
+Iteration   7: 1042,716 ms/op
+Iteration   8: 1809,501 ms/op
+Iteration   9: 1006,528 ms/op
+Iteration  10: 1981,032 ms/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.benchmarks.PrimeGenerationBenchmark.measureProbablePrime":
+  1961,851 ?(99.9%) 2094,113 ms/op [Average]
+  (min, avg, max) = (531,595, 1961,851, 5211,231), stdev = 1385,126
+  CI (99.9%): [? 0, 4055,964] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 15 days ago)
+# VM version: JDK 1.8.0_73, VM 25.73-b02
+# VM invoker: C:\Program Files\Java\jdk1.8.0_73\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.benchmarks.PrimeGenerationBenchmark.measureProvablePrime
+# Parameters: (bitLength = 256)
+
+# Run progress: 50,00% complete, ETA 00:01:24
+# Fork: 1 of 1
+# Warmup Iteration   1: 15,237 ms/op
+# Warmup Iteration   2: 12,970 ms/op
+# Warmup Iteration   3: 10,715 ms/op
+# Warmup Iteration   4: 11,533 ms/op
+# Warmup Iteration   5: 10,600 ms/op
+Iteration   1: 11,699 ms/op
+Iteration   2: 12,386 ms/op
+Iteration   3: 12,263 ms/op
+Iteration   4: 9,368 ms/op
+Iteration   5: 11,378 ms/op
+Iteration   6: 10,654 ms/op
+Iteration   7: 12,583 ms/op
+Iteration   8: 10,947 ms/op
+Iteration   9: 11,094 ms/op
+Iteration  10: 15,168 ms/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.benchmarks.PrimeGenerationBenchmark.measureProvablePrime":
+  11,754 ?(99.9%) 2,317 ms/op [Average]
+  (min, avg, max) = (9,368, 11,754, 15,168), stdev = 1,532
+  CI (99.9%): [9,437, 14,071] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 15 days ago)
+# VM version: JDK 1.8.0_73, VM 25.73-b02
+# VM invoker: C:\Program Files\Java\jdk1.8.0_73\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.benchmarks.PrimeGenerationBenchmark.measureProvablePrime
+# Parameters: (bitLength = 512)
+
+# Run progress: 62,50% complete, ETA 00:00:59
+# Fork: 1 of 1
+# Warmup Iteration   1: 151,221 ms/op
+# Warmup Iteration   2: 159,661 ms/op
+# Warmup Iteration   3: 130,445 ms/op
+# Warmup Iteration   4: 87,678 ms/op
+# Warmup Iteration   5: 124,447 ms/op
+Iteration   1: 145,933 ms/op
+Iteration   2: 79,442 ms/op
+Iteration   3: 136,365 ms/op
+Iteration   4: 117,821 ms/op
+Iteration   5: 145,721 ms/op
+Iteration   6: 145,300 ms/op
+Iteration   7: 103,741 ms/op
+Iteration   8: 126,333 ms/op
+Iteration   9: 77,408 ms/op
+Iteration  10: 105,724 ms/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.benchmarks.PrimeGenerationBenchmark.measureProvablePrime":
+  118,379 ?(99.9%) 39,642 ms/op [Average]
+  (min, avg, max) = (77,408, 118,379, 145,933), stdev = 26,221
+  CI (99.9%): [78,737, 158,021] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 15 days ago)
+# VM version: JDK 1.8.0_73, VM 25.73-b02
+# VM invoker: C:\Program Files\Java\jdk1.8.0_73\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.benchmarks.PrimeGenerationBenchmark.measureProvablePrime
+# Parameters: (bitLength = 1024)
+
+# Run progress: 75,00% complete, ETA 00:00:39
+# Fork: 1 of 1
+# Warmup Iteration   1: 1655,831 ms/op
+# Warmup Iteration   2: 1221,626 ms/op
+# Warmup Iteration   3: 1666,495 ms/op
+# Warmup Iteration   4: 1640,111 ms/op
+# Warmup Iteration   5: 1122,515 ms/op
+Iteration   1: 2402,794 ms/op
+Iteration   2: 1300,913 ms/op
+Iteration   3: 1258,273 ms/op
+Iteration   4: 1202,074 ms/op
+Iteration   5: 687,068 ms/op
+Iteration   6: 2143,559 ms/op
+Iteration   7: 429,701 ms/op
+Iteration   8: 535,390 ms/op
+Iteration   9: 1344,164 ms/op
+Iteration  10: 661,810 ms/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.benchmarks.PrimeGenerationBenchmark.measureProvablePrime":
+  1196,574 ?(99.9%) 1002,736 ms/op [Average]
+  (min, avg, max) = (429,701, 1196,574, 2402,794), stdev = 663,248
+  CI (99.9%): [193,838, 2199,311] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 15 days ago)
+# VM version: JDK 1.8.0_73, VM 25.73-b02
+# VM invoker: C:\Program Files\Java\jdk1.8.0_73\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.benchmarks.PrimeGenerationBenchmark.measureProvablePrime
+# Parameters: (bitLength = 2048)
+
+# Run progress: 87,50% complete, ETA 00:00:20
+# Fork: 1 of 1
+# Warmup Iteration   1: 18513,552 ms/op
+# Warmup Iteration   2: 5654,779 ms/op
+# Warmup Iteration   3: 7562,188 ms/op
+# Warmup Iteration   4: 25986,981 ms/op
+# Warmup Iteration   5: 4193,315 ms/op
+Iteration   1: 14325,246 ms/op
+Iteration   2: 12172,204 ms/op
+Iteration   3: 49531,691 ms/op
+Iteration   4: 8844,802 ms/op
+Iteration   5: 11282,444 ms/op
+Iteration   6: 13074,999 ms/op
+Iteration   7: 31208,369 ms/op
+Iteration   8: 19418,769 ms/op
+Iteration   9: 7261,776 ms/op
+Iteration  10: 3979,402 ms/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.benchmarks.PrimeGenerationBenchmark.measureProvablePrime":
+  17109,970 ?(99.9%) 20627,312 ms/op [Average]
+  (min, avg, max) = (3979,402, 17109,970, 49531,691), stdev = 13643,689
+  CI (99.9%): [? 0, 37737,282] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:06:15
+
+Benchmark                                      (bitLength)  Mode  Cnt      Score       Error  Units
+PrimeGenerationBenchmark.measureProbablePrime          256  avgt   10      4,501 ?     0,299  ms/op
+PrimeGenerationBenchmark.measureProbablePrime          512  avgt   10     22,153 ?     2,634  ms/op
+PrimeGenerationBenchmark.measureProbablePrime         1024  avgt   10    210,565 ?   113,178  ms/op
+PrimeGenerationBenchmark.measureProbablePrime         2048  avgt   10   1961,851 ?  2094,113  ms/op
+
+PrimeGenerationBenchmark.measureProvablePrime          256  avgt   10     11,754 ?     2,317  ms/op
+PrimeGenerationBenchmark.measureProvablePrime          512  avgt   10    118,379 ?    39,642  ms/op
+PrimeGenerationBenchmark.measureProvablePrime         1024  avgt   10   1196,574 ?  1002,736  ms/op
+PrimeGenerationBenchmark.measureProvablePrime         2048  avgt   10  17109,970 ? 20627,312  ms/op
