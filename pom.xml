@@ -12,6 +12,7 @@
     <modules>
         <module>big-int-test</module>
         <module>key-generation</module>
+        <module>digital-signature</module>
     </modules>
 
     <properties>
