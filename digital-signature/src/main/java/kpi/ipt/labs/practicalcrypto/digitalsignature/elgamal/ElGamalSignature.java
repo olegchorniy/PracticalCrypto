@@ -15,11 +15,21 @@ import static java.math.BigInteger.ONE;
 
 public class ElGamalSignature {
 
+    public static final String DEFAULT_DIGEST_ALGORITHM = "SHA-1";
+
     private static final BigInteger TWO = BigInteger.valueOf(2);
 
     private final MessageDigest digest;
     private final Random random;
     private ElGamalKey key;
+
+    public ElGamalSignature() {
+        this(new Random());
+    }
+
+    public ElGamalSignature(Random random) {
+        this(DEFAULT_DIGEST_ALGORITHM, random);
+    }
 
     public ElGamalSignature(String digestAlgorithm, Random random) {
         this.random = random;
@@ -43,6 +53,10 @@ public class ElGamalSignature {
 
         this.digest.reset();
         this.key = key;
+    }
+
+    public void update(byte[] bytes, int offset, int length) {
+        this.digest.update(bytes, offset, length);
     }
 
     public void update(byte[] bytes) {

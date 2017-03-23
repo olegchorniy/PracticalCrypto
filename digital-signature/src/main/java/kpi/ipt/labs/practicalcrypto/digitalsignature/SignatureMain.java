@@ -1,29 +1,35 @@
 package kpi.ipt.labs.practicalcrypto.digitalsignature;
 
 import kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.ElGamalSignature;
-import kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.key.ElGamalKeyGenerator;
+import kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.KeyStore;
 import kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.key.ElGamalKeyPair;
 import kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.key.ElGamalPrivateKey;
 import kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.key.ElGamalPublicKey;
+import kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.utils.SignatureUtils;
 
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.security.NoSuchAlgorithmException;
+import java.io.File;
 import java.util.Random;
 
 public class SignatureMain {
 
-    private static final Path keyStore = Paths.get("D:", "work_dir", "pract_crypt", "key.bin");
+    private static final File testFile = new File("D:\\work_dir\\pract_crypt\\test_file.bin");
 
-    public static void main(String[] args) throws NoSuchAlgorithmException {
+    public static void main(String[] args) throws Exception {
+        ElGamalKeyPair keyPair = KeyStore.getKeyPair();
+
+        byte[] signature = SignatureUtils.sign(keyPair.getPrivateKey(), testFile);
+        System.out.println("Signature: " + toString(signature));
+
+        boolean result = SignatureUtils.verify(keyPair.getPublicKey(), signature, testFile);
+        System.out.println("Verification: " + result);
+    }
+
+    public static void fullTest() throws Exception {
         Random random = new Random();
 
         ElGamalSignature elGamal = new ElGamalSignature("SHA-256", random);
 
-        generateNewKey(512);
-        ElGamalKeyPair keyPair = deserialize();
+        ElGamalKeyPair keyPair = KeyStore.generateAndSave(512);
         ElGamalPrivateKey privateKey = keyPair.getPrivateKey();
         ElGamalPublicKey publicKey = keyPair.getPublicKey();
 
@@ -34,54 +40,30 @@ public class SignatureMain {
         elGamal.update(message);
         byte[] signature = elGamal.sign();
 
-        System.out.print("Signature: ");
-        print(signature);
+        System.out.print("Signature: " + toString(signature));
 
         // 2. verify
         elGamal.init(false, publicKey);
         elGamal.update(message);
 
-        System.out.println("Verdict: " + elGamal.verify(signature));
+        System.out.println("Verification: " + elGamal.verify(signature));
     }
 
-    public static void generateNewKey(int bitLength) {
-        Random random = new Random();
+    private static String toString(byte[] values) {
+        StringBuilder builder = new StringBuilder();
 
-        ElGamalKeyGenerator keyGenerator = new ElGamalKeyGenerator(random);
-        ElGamalKeyPair keyPair = keyGenerator.generateKeyPair(bitLength);
-
-        serialize(keyPair);
-    }
-
-    private static void serialize(ElGamalKeyPair keyPair) {
-        try (OutputStream out = Files.newOutputStream(keyStore);
-             ObjectOutputStream oos = new ObjectOutputStream(out)) {
-            oos.writeObject(keyPair);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private static ElGamalKeyPair deserialize() {
-        try (InputStream in = Files.newInputStream(keyStore);
-             ObjectInputStream ois = new ObjectInputStream(in)) {
-            return (ElGamalKeyPair) ois.readObject();
-        } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private static void print(byte[] values) {
-        System.out.print("[");
+        builder.append("[");
 
         for (int i = 0; i < values.length; i++) {
             if (i != 0) {
-                System.out.print(", ");
+                builder.append(", ");
             }
 
-            System.out.print(Integer.toHexString(values[i] & 0xFF));
+            builder.append(Integer.toHexString(values[i] & 0xFF));
         }
 
-        System.out.println("]");
+        builder.append("]");
+
+        return builder.toString();
     }
 }
