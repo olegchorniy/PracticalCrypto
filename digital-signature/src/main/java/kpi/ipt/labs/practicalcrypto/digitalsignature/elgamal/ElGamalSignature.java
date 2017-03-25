@@ -40,17 +40,12 @@ public class ElGamalSignature {
         }
     }
 
-    public void init(boolean forSigning, ElGamalKey key) {
-        if (forSigning) {
-            if (!(key instanceof ElGamalPrivateKey)) {
-                throw new IllegalArgumentException("Private key required for signing");
-            }
-        } else {
-            if (!(key instanceof ElGamalPublicKey)) {
-                throw new IllegalArgumentException("Public key required for verification");
-            }
-        }
+    public void initSign(ElGamalPrivateKey key) {
+        this.digest.reset();
+        this.key = key;
+    }
 
+    public void initVerify(ElGamalPublicKey key) {
         this.digest.reset();
         this.key = key;
     }
@@ -72,7 +67,6 @@ public class ElGamalSignature {
 
         byte[] digest = this.digest.digest();
         BigInteger h = ConversionUtil.fromUnsignedByteArray(trimToLength(digest, p));
-        System.out.println("[Signing] h = " + h.toString(16));
 
         BigInteger pMinusOne = p.subtract(ONE);
         BigInteger k = selectK(pMinusOne, this.random);
@@ -80,9 +74,6 @@ public class ElGamalSignature {
         BigInteger r = g.modPow(k, p);
         //s = k^(-1) * (h(m) - x * r) mod (p - 1)
         BigInteger s = k.modInverse(pMinusOne).multiply(h.subtract(x.multiply(r))).mod(pMinusOne);
-
-        System.out.println("[Signing] r = " + r.toString(16));
-        System.out.println("[Signing] s = " + s.toString(16));
 
         return packToByteArray(r, s);
     }
@@ -96,14 +87,10 @@ public class ElGamalSignature {
 
         byte[] digest = this.digest.digest();
         BigInteger h = ConversionUtil.fromUnsignedByteArray(trimToLength(digest, p));
-        System.out.println("[Verification] h = " + h.toString(16));
 
         BigInteger[] sig = unpackFromByteArray(signature);
         BigInteger r = sig[0];
         BigInteger s = sig[1];
-
-        System.out.println("[Verification] r = " + r.toString(16));
-        System.out.println("[Verification] s = " + s.toString(16));
 
         //v1 = y^r * r^s mod p
         BigInteger v1 = y.modPow(r, p).multiply(r.modPow(s, p)).mod(p);

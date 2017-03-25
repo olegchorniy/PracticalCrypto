@@ -21,7 +21,7 @@ public final class SignatureUtils {
 
     public static byte[] sign(ElGamalPrivateKey privateKey, InputStream is) throws IOException {
         ElGamalSignature elGamal = new ElGamalSignature();
-        elGamal.init(true, privateKey);
+        elGamal.initSign(privateKey);
 
         consumeBytes(is, elGamal::update);
 
@@ -36,7 +36,7 @@ public final class SignatureUtils {
 
     public static boolean verify(ElGamalPublicKey publicKey, byte[] signature, InputStream is) throws IOException {
         ElGamalSignature elGamal = new ElGamalSignature();
-        elGamal.init(false, publicKey);
+        elGamal.initVerify(publicKey);
 
         consumeBytes(is, elGamal::update);
 

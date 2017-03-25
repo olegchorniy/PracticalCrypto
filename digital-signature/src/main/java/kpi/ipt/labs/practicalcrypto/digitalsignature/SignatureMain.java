@@ -12,9 +12,13 @@ import java.util.Random;
 
 public class SignatureMain {
 
-    private static final File testFile = new File("D:\\work_dir\\pract_crypt\\test_file.bin");
+    public static final File testFile = new File("D:\\work_dir\\pract_crypt\\test_file.bin");
 
     public static void main(String[] args) throws Exception {
+        fileTest();
+    }
+
+    public static void fileTest() throws Exception {
         ElGamalKeyPair keyPair = KeyStore.getKeyPair();
 
         byte[] signature = SignatureUtils.sign(keyPair.getPrivateKey(), testFile);
@@ -24,26 +28,28 @@ public class SignatureMain {
         System.out.println("Verification: " + result);
     }
 
-    public static void fullTest() throws Exception {
+    public static void smallTest() throws Exception {
         Random random = new Random();
 
-        ElGamalSignature elGamal = new ElGamalSignature("SHA-256", random);
+        ElGamalSignature elGamal = new ElGamalSignature("SHA-1", random);
 
-        ElGamalKeyPair keyPair = KeyStore.generateAndSave(512);
+        ElGamalKeyPair keyPair = KeyStore.getKeyPair();
         ElGamalPrivateKey privateKey = keyPair.getPrivateKey();
         ElGamalPublicKey publicKey = keyPair.getPublicKey();
 
         byte[] message = {1, 2, 3, 4, 5, 6, 7, 8};
 
         // 1. generate signature
-        elGamal.init(true, privateKey);
+        elGamal.initSign(privateKey);
         elGamal.update(message);
         byte[] signature = elGamal.sign();
 
-        System.out.print("Signature: " + toString(signature));
+        System.out.println("Signature: " + toString(signature));
+
+        /*signature[0]++;*/
 
         // 2. verify
-        elGamal.init(false, publicKey);
+        elGamal.initVerify(publicKey);
         elGamal.update(message);
 
         System.out.println("Verification: " + elGamal.verify(signature));

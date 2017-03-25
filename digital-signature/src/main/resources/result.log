@@ -1,0 +1,236 @@
+C:\Users\Oleg\IDEAProjects\PracticalCrypto>"C:\Program Files\Java\jdk1.8.0_73\bin\java" -Dfile.encoding=UTF-8 -classpath C:\Users\Oleg\IDEAProjects\PracticalCrypto\digital-signature\
+target\classes;C:\Users\Oleg\.m2\repository\org\openjdk\jmh\jmh-core\1.17.5\jmh-core-1.17.5.jar;C:\Users\Oleg\.m2\repository\net\sf\jopt-simple\jopt-simple\4.6\jopt-simple-4.6.jar;C:
+\Users\Oleg\.m2\repository\org\apache\commons\commons-math3\3.2\commons-math3-3.2.jar;C:\Users\Oleg\.m2\repository\org\openjdk\jmh\jmh-generator-annprocess\1.17.5\jmh-generator-annpr
+ocess-1.17.5.jar;C:\Users\Oleg\.m2\repository\org\bouncycastle\bcprov-jdk15on\1.56\bcprov-jdk15on-1.56.jar org.openjdk.jmh.Main kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.
+ElGamalBenchmark.*
+# JMH 1.17.5 (released 29 days ago)
+# VM version: JDK 1.8.0_73, VM 25.73-b02
+# VM invoker: C:\Program Files\Java\jdk1.8.0_73\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.ElGamalBenchmark.keyPairBenchmark
+# Parameters: (keyLength = 512)
+
+# Run progress: 0,00% complete, ETA 00:01:30
+# Fork: 1 of 1
+# Warmup Iteration   1: 5325,936 ms/op
+# Warmup Iteration   2: 1555,784 ms/op
+# Warmup Iteration   3: 17382,700 ms/op
+# Warmup Iteration   4: 20106,657 ms/op
+# Warmup Iteration   5: 39872,269 ms/op
+Iteration   1: 5794,633 ms/op
+Iteration   2: 1547,001 ms/op
+Iteration   3: 10743,336 ms/op
+Iteration   4: 1723,165 ms/op
+Iteration   5: 1253,533 ms/op
+Iteration   6: 5464,042 ms/op
+Iteration   7: 17260,405 ms/op
+Iteration   8: 2000,420 ms/op
+Iteration   9: 3998,278 ms/op
+Iteration  10: 1872,740 ms/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.ElGamalBenchmark.keyPairBenchmark":
+  5165,755 ?(99.9%) 7812,937 ms/op [Average]
+  (min, avg, max) = (1253,533, 5165,755, 17260,405), stdev = 5167,774
+  CI (99.9%): [? 0, 12978,693] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 29 days ago)
+# VM version: JDK 1.8.0_73, VM 25.73-b02
+# VM invoker: C:\Program Files\Java\jdk1.8.0_73\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.ElGamalBenchmark.keyPairBenchmark
+# Parameters: (keyLength = 1024)
+
+# Run progress: 16,67% complete, ETA 00:11:57
+# Fork: 1 of 1
+# Warmup Iteration   1: 355744,061 ms/op
+# Warmup Iteration   2: 81233,671 ms/op
+# Warmup Iteration   3: 170764,078 ms/op
+# Warmup Iteration   4: 63554,716 ms/op
+# Warmup Iteration   5: 160535,474 ms/op
+Iteration   1: 5648,416 ms/op
+Iteration   2: 13449,355 ms/op
+Iteration   3: 120993,715 ms/op
+Iteration   4: 5091,930 ms/op
+Iteration   5: 8927,457 ms/op
+Iteration   6: 56874,589 ms/op
+Iteration   7: 43011,573 ms/op
+Iteration   8: 7306,928 ms/op
+Iteration   9: 1845,549 ms/op
+Iteration  10: 278588,371 ms/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.ElGamalBenchmark.keyPairBenchmark":
+  54173,788 ?(99.9%) 131764,910 ms/op [Average]
+  (min, avg, max) = (1845,549, 54173,788, 278588,371), stdev = 87154,330
+  CI (99.9%): [? 0, 185938,698] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 29 days ago)
+# VM version: JDK 1.8.0_73, VM 25.73-b02
+# VM invoker: C:\Program Files\Java\jdk1.8.0_73\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.ElGamalBenchmark.signatureBenchmark
+# Parameters: (keyLength = 512)
+
+# Run progress: 33,33% complete, ETA 00:50:35
+# Fork: 1 of 1
+# Warmup Iteration   1: 563,230 ms/op
+# Warmup Iteration   2: 500,946 ms/op
+# Warmup Iteration   3: 529,431 ms/op
+# Warmup Iteration   4: 520,257 ms/op
+# Warmup Iteration   5: 534,866 ms/op
+Iteration   1: 523,589 ms/op
+Iteration   2: 583,612 ms/op
+Iteration   3: 531,112 ms/op
+Iteration   4: 577,892 ms/op
+Iteration   5: 527,776 ms/op
+Iteration   6: 526,885 ms/op
+Iteration   7: 519,833 ms/op
+Iteration   8: 574,471 ms/op
+Iteration   9: 507,807 ms/op
+Iteration  10: 505,285 ms/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.ElGamalBenchmark.signatureBenchmark":
+  537,826 ?(99.9%) 44,499 ms/op [Average]
+  (min, avg, max) = (505,285, 537,826, 583,612), stdev = 29,433
+  CI (99.9%): [493,328, 582,325] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 29 days ago)
+# VM version: JDK 1.8.0_73, VM 25.73-b02
+# VM invoker: C:\Program Files\Java\jdk1.8.0_73\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.ElGamalBenchmark.signatureBenchmark
+# Parameters: (keyLength = 1024)
+
+# Run progress: 50,00% complete, ETA 00:25:41
+# Fork: 1 of 1
+# Warmup Iteration   1: 542,184 ms/op
+# Warmup Iteration   2: 503,623 ms/op
+# Warmup Iteration   3: 485,193 ms/op
+# Warmup Iteration   4: 482,995 ms/op
+# Warmup Iteration   5: 478,044 ms/op
+Iteration   1: 490,739 ms/op
+Iteration   2: 528,598 ms/op
+Iteration   3: 537,528 ms/op
+Iteration   4: 581,626 ms/op
+Iteration   5: 551,942 ms/op
+Iteration   6: 600,672 ms/op
+Iteration   7: 536,943 ms/op
+Iteration   8: 513,333 ms/op
+Iteration   9: 501,851 ms/op
+Iteration  10: 552,641 ms/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.ElGamalBenchmark.signatureBenchmark":
+  539,587 ?(99.9%) 51,524 ms/op [Average]
+  (min, avg, max) = (490,739, 539,587, 600,672), stdev = 34,080
+  CI (99.9%): [488,063, 591,112] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 29 days ago)
+# VM version: JDK 1.8.0_73, VM 25.73-b02
+# VM invoker: C:\Program Files\Java\jdk1.8.0_73\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.ElGamalBenchmark.verificationBenchmark
+# Parameters: (keyLength = 512)
+
+# Run progress: 66,67% complete, ETA 00:14:12
+# Fork: 1 of 1
+# Warmup Iteration   1: 511,171 ms/op
+# Warmup Iteration   2: 676,272 ms/op
+# Warmup Iteration   3: 595,974 ms/op
+# Warmup Iteration   4: 630,484 ms/op
+# Warmup Iteration   5: 548,749 ms/op
+Iteration   1: 525,259 ms/op
+Iteration   2: 478,241 ms/op
+Iteration   3: 490,793 ms/op
+Iteration   4: 475,519 ms/op
+Iteration   5: 483,659 ms/op
+Iteration   6: 537,680 ms/op
+Iteration   7: 513,793 ms/op
+Iteration   8: 479,999 ms/op
+Iteration   9: 536,136 ms/op
+Iteration  10: 486,843 ms/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.ElGamalBenchmark.verificationBenchmark":
+  500,792 ?(99.9%) 37,528 ms/op [Average]
+  (min, avg, max) = (475,519, 500,792, 537,680), stdev = 24,822
+  CI (99.9%): [463,264, 538,320] (assumes normal distribution)
+
+
+# JMH 1.17.5 (released 29 days ago)
+# VM version: JDK 1.8.0_73, VM 25.73-b02
+# VM invoker: C:\Program Files\Java\jdk1.8.0_73\jre\bin\java.exe
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.ElGamalBenchmark.verificationBenchmark
+# Parameters: (keyLength = 1024)
+
+# Run progress: 83,33% complete, ETA 00:05:46
+# Fork: 1 of 1
+# Warmup Iteration   1: 504,205 ms/op
+# Warmup Iteration   2: 484,259 ms/op
+# Warmup Iteration   3: 503,773 ms/op
+# Warmup Iteration   4: 483,280 ms/op
+# Warmup Iteration   5: 559,682 ms/op
+Iteration   1: 552,662 ms/op
+Iteration   2: 532,623 ms/op
+Iteration   3: 502,273 ms/op
+Iteration   4: 508,496 ms/op
+Iteration   5: 530,711 ms/op
+Iteration   6: 514,453 ms/op
+Iteration   7: 517,503 ms/op
+Iteration   8: 510,823 ms/op
+Iteration   9: 483,351 ms/op
+Iteration  10: 523,277 ms/op
+
+
+Result "kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.ElGamalBenchmark.verificationBenchmark":
+  517,617 ?(99.9%) 28,534 ms/op [Average]
+  (min, avg, max) = (483,351, 517,617, 552,662), stdev = 18,873
+  CI (99.9%): [489,084, 546,151] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:30:41
+
+Benchmark                               (keyLength)  Mode  Cnt      Score        Error  Units
+ElGamalBenchmark.keyPairBenchmark               512  avgt   10   5165,755 ?   7812,937  ms/op
+ElGamalBenchmark.keyPairBenchmark              1024  avgt   10  54173,788 ? 131764,910  ms/op
+ElGamalBenchmark.signatureBenchmark             512  avgt   10    537,826 ?     44,499  ms/op
+ElGamalBenchmark.signatureBenchmark            1024  avgt   10    539,587 ?     51,524  ms/op
+ElGamalBenchmark.verificationBenchmark          512  avgt   10    500,792 ?     37,528  ms/op
+ElGamalBenchmark.verificationBenchmark         1024  avgt   10    517,617 ?     28,534  ms/op
