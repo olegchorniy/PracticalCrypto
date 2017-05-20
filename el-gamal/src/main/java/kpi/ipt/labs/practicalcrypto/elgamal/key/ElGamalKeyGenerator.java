@@ -1,6 +1,6 @@
-package kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.key;
+package kpi.ipt.labs.practicalcrypto.elgamal.key;
 
-import kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.utils.RandomUtils;
+import kpi.ipt.labs.practicalcrypto.elgamal.utils.RandomUtils;
 
 import java.math.BigInteger;
 import java.util.Random;

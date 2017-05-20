@@ -1,7 +1,4 @@
-package kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal;
-
-import kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.key.ElGamalKeyGenerator;
-import kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.key.ElGamalKeyPair;
+package kpi.ipt.labs.practicalcrypto.elgamal.key;
 
 import java.io.*;
 import java.nio.file.Files;

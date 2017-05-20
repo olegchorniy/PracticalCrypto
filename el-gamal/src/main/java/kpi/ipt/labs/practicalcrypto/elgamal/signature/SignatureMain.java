@@ -1,11 +1,10 @@
-package kpi.ipt.labs.practicalcrypto.digitalsignature;
+package kpi.ipt.labs.practicalcrypto.elgamal.signature;
 
-import kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.ElGamalSignature;
-import kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.KeyStore;
-import kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.key.ElGamalKeyPair;
-import kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.key.ElGamalPrivateKey;
-import kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.key.ElGamalPublicKey;
-import kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.utils.SignatureUtils;
+import kpi.ipt.labs.practicalcrypto.elgamal.key.KeyStore;
+import kpi.ipt.labs.practicalcrypto.elgamal.key.ElGamalKeyPair;
+import kpi.ipt.labs.practicalcrypto.elgamal.key.ElGamalPrivateKey;
+import kpi.ipt.labs.practicalcrypto.elgamal.key.ElGamalPublicKey;
+import kpi.ipt.labs.practicalcrypto.elgamal.utils.SignatureUtils;
 
 import java.io.File;
 import java.util.Random;

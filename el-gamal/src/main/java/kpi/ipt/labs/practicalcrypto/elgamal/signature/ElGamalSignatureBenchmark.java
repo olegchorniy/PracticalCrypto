@@ -1,10 +1,9 @@
-package kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal;
+package kpi.ipt.labs.practicalcrypto.elgamal.signature;
 
 
-import kpi.ipt.labs.practicalcrypto.digitalsignature.SignatureMain;
-import kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.key.ElGamalKeyGenerator;
-import kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.key.ElGamalKeyPair;
-import kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.utils.SignatureUtils;
+import kpi.ipt.labs.practicalcrypto.elgamal.key.ElGamalKeyGenerator;
+import kpi.ipt.labs.practicalcrypto.elgamal.key.ElGamalKeyPair;
+import kpi.ipt.labs.practicalcrypto.elgamal.utils.SignatureUtils;
 import org.openjdk.jmh.annotations.*;
 
 import java.io.IOException;
@@ -16,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 @Fork(1)
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
-public class ElGamalBenchmark {
+public class ElGamalSignatureBenchmark {
 
     @State(Scope.Benchmark)
     public static class GenerationState {

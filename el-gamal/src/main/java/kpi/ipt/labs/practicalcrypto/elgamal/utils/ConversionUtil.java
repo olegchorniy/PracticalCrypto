@@ -1,4 +1,4 @@
-package kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.utils;
+package kpi.ipt.labs.practicalcrypto.elgamal.utils;
 
 import java.math.BigInteger;
 

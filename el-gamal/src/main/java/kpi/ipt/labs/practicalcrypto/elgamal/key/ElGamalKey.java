@@ -1,4 +1,4 @@
-package kpi.ipt.labs.practicalcrypto.digitalsignature.elgamal.key;
+package kpi.ipt.labs.practicalcrypto.elgamal.key;
 
 import java.io.Serializable;
 import java.math.BigInteger;
