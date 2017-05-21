@@ -1,6 +1,6 @@
-package kpi.ipt.labs.practicalcrypto.elgamal.utils;
+package kpi.ipt.labs.practicalcrypto.utils;
 
-import kpi.ipt.labs.practicalcrypto.elgamal.signature.ElGamalSignature;
+import kpi.ipt.labs.practicalcrypto.signature.ElGamalSignature;
 import kpi.ipt.labs.practicalcrypto.elgamal.key.ElGamalPrivateKey;
 import kpi.ipt.labs.practicalcrypto.elgamal.key.ElGamalPublicKey;
 

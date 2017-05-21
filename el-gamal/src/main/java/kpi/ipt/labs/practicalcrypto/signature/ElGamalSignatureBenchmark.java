@@ -1,9 +1,9 @@
-package kpi.ipt.labs.practicalcrypto.elgamal.signature;
+package kpi.ipt.labs.practicalcrypto.signature;
 
 
 import kpi.ipt.labs.practicalcrypto.elgamal.key.ElGamalKeyGenerator;
 import kpi.ipt.labs.practicalcrypto.elgamal.key.ElGamalKeyPair;
-import kpi.ipt.labs.practicalcrypto.elgamal.utils.SignatureUtils;
+import kpi.ipt.labs.practicalcrypto.utils.SignatureUtils;
 import org.openjdk.jmh.annotations.*;
 
 import java.io.IOException;

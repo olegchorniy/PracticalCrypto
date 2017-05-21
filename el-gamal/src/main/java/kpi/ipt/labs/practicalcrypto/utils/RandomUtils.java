@@ -1,4 +1,4 @@
-package kpi.ipt.labs.practicalcrypto.elgamal.utils;
+package kpi.ipt.labs.practicalcrypto.utils;
 
 import java.math.BigInteger;
 import java.util.Random;
