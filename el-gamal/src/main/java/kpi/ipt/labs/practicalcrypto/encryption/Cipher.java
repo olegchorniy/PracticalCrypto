@@ -1,5 +1,7 @@
 package kpi.ipt.labs.practicalcrypto.encryption;
 
+import java.util.Arrays;
+
 public class Cipher {
 
     private final AsymmetricBlockCipher delegate;
@@ -34,15 +36,21 @@ public class Cipher {
         }
 
         for (int i = 0; i < outputBlocks; i++) {
-            offset += fillBuffer(input, offset);
 
-            //TODO: we can avoid unnecessary copying from input buffer to internal buffer
+            byte[] processedBytes;
 
-            byte[] processed = delegate.processBlock(buff, 0, buff.length);
-            System.arraycopy(processed, 0, output, outputOffset, processed.length);
+            if (buffOffset != 0) {
+                offset += fillBuffer(input, offset);
+                processedBytes = delegate.processBlock(buff, 0, buff.length);
 
-            buffOffset = 0;
-            outputOffset += processed.length;
+                cleanBuffer();
+            } else {
+                processedBytes = delegate.processBlock(input, offset, inputBlockSize);
+                offset += inputBlockSize;
+            }
+
+            System.arraycopy(processedBytes, 0, output, outputOffset, processedBytes.length);
+            outputOffset += processedBytes.length;
         }
 
         int remainedBytes = totalInputLen - outputBlocks * inputBlockSize;
@@ -61,6 +69,11 @@ public class Cipher {
     private void copyToBuffer(byte[] input, int offset, int length) {
         System.arraycopy(input, offset, buff, buffOffset, length);
         buffOffset += length;
+    }
+
+    private void cleanBuffer() {
+        Arrays.fill(buff, (byte) 0);
+        buffOffset = 0;
     }
 
     public byte[] doFinal() {
