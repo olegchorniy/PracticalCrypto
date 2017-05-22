@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 public class Cipher {
 
+    private static final byte[] EMPTY_BUFFER = new byte[0];
+
     private final AsymmetricBlockCipher delegate;
 
     private final byte[] buff;
@@ -12,6 +14,28 @@ public class Cipher {
     public Cipher(AsymmetricBlockCipher delegate) {
         this.delegate = delegate;
         this.buff = new byte[delegate.getInputBlockSize()];
+    }
+
+    public byte[] update(byte[] input, int offset, int length) {
+        final int inputBlockSize = delegate.getInputBlockSize();
+        final int outputBlockSize = delegate.getOutputBlockSize();
+
+        final int totalInputLen = length + buffOffset;
+
+        if (totalInputLen < inputBlockSize) {
+            copyToBuffer(input, offset, length);
+
+            return EMPTY_BUFFER;
+        }
+
+        final int outputBlocks = totalInputLen / inputBlockSize;
+        final int outputLength = outputBlocks * outputBlockSize;
+
+        byte[] outputBuffer = new byte[outputLength];
+
+        doUpdate(input, offset, length, outputBuffer, 0);
+
+        return outputBuffer;
     }
 
     public int update(byte[] input, int offset, int length,
@@ -35,6 +59,18 @@ public class Cipher {
             throw new IllegalStateException("Output buffer doesn't have enough space");
         }
 
+        doUpdate(input, offset, length, output, outputOffset);
+
+        return outputLength;
+    }
+
+    private void doUpdate(byte[] input, int offset, int length,
+                          byte[] output, int outputOffset) {
+
+        final int inputBlockSize = delegate.getInputBlockSize();
+        final int totalInputLength = buffOffset + length;
+        final int outputBlocks = totalInputLength / inputBlockSize;
+
         for (int i = 0; i < outputBlocks; i++) {
 
             byte[] processedBytes;
@@ -53,10 +89,8 @@ public class Cipher {
             outputOffset += processedBytes.length;
         }
 
-        int remainedBytes = totalInputLen - outputBlocks * inputBlockSize;
+        int remainedBytes = totalInputLength - outputBlocks * inputBlockSize;
         copyToBuffer(input, offset, remainedBytes);
-
-        return outputLength;
     }
 
     private int fillBuffer(byte[] input, int offset) {

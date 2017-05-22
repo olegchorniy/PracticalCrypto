@@ -4,20 +4,16 @@ import kpi.ipt.labs.practicalcrypto.elgamal.key.ElGamalKey;
 import kpi.ipt.labs.practicalcrypto.elgamal.key.ElGamalPrivateKey;
 import kpi.ipt.labs.practicalcrypto.elgamal.key.ElGamalPublicKey;
 import kpi.ipt.labs.practicalcrypto.utils.ConversionUtil;
+import kpi.ipt.labs.practicalcrypto.utils.DigestFactory;
 import kpi.ipt.labs.practicalcrypto.utils.RandomUtils;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 
 import static java.math.BigInteger.ONE;
 
 public class ElGamalSignature {
-
-    public static final String DEFAULT_DIGEST_ALGORITHM = "SHA-1";
-
-    private static final BigInteger TWO = BigInteger.valueOf(2);
 
     private final MessageDigest digest;
     private final Random random;
@@ -28,16 +24,16 @@ public class ElGamalSignature {
     }
 
     public ElGamalSignature(Random random) {
-        this(DEFAULT_DIGEST_ALGORITHM, random);
+        this(DigestFactory.createSHA1(), random);
     }
 
     public ElGamalSignature(String digestAlgorithm, Random random) {
+        this(DigestFactory.createDigestInstance(digestAlgorithm), random);
+    }
+
+    public ElGamalSignature(MessageDigest digest, Random random) {
+        this.digest = digest;
         this.random = random;
-        try {
-            this.digest = MessageDigest.getInstance(digestAlgorithm);
-        } catch (NoSuchAlgorithmException e) {
-            throw new IllegalArgumentException("Unknown message digest algorithm [" + digestAlgorithm + "]", e);
-        }
     }
 
     public void initSign(ElGamalPrivateKey key) {
