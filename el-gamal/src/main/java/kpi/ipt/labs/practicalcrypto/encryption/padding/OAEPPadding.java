@@ -3,9 +3,10 @@ package kpi.ipt.labs.practicalcrypto.encryption.padding;
 import kpi.ipt.labs.practicalcrypto.encryption.AsymmetricBlockCipher;
 import kpi.ipt.labs.practicalcrypto.encryption.CipherParameters;
 import kpi.ipt.labs.practicalcrypto.encryption.EncryptionUtils;
+import kpi.ipt.labs.practicalcrypto.utils.DigestFactory;
 
 import java.security.MessageDigest;
-import java.security.SecureRandom;
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -15,49 +16,55 @@ import java.util.Random;
  */
 public class OAEPPadding implements AsymmetricBlockCipher {
 
-    private final AsymmetricBlockCipher delegate;
-    private final Random random;
+    private final Random random = new Random();
 
-    private final MessageDigest hashG;
-    private final MessageDigest hashH;
+    private final AsymmetricBlockCipher engine;
+    private final MGF mgf;
 
-    private final int k0;
-
-    private final int inputBlockLength;
+    private final byte[] lHash;
+    private final int hLen;
 
     private boolean forEncryption;
 
-    public OAEPPadding(AsymmetricBlockCipher delegate, MessageDigest hashG, MessageDigest hashH, int k1) {
-        this(delegate, new SecureRandom(), hashG, hashH, k1);
+    public OAEPPadding(AsymmetricBlockCipher cipher) {
+        this(cipher, DigestFactory.createSHA1());
     }
 
-    public OAEPPadding(AsymmetricBlockCipher delegate, Random random, MessageDigest hashG, MessageDigest hashH, int k1) {
-        this.delegate = delegate;
-        this.random = random;
+    public OAEPPadding(
+            AsymmetricBlockCipher cipher,
+            MessageDigest hash) {
+        this(cipher, hash, new MGF1(hash));
+    }
 
-        this.hashG = hashG;
-        this.hashH = hashH;
+    public OAEPPadding(
+            AsymmetricBlockCipher cipher,
+            MessageDigest hash,
+            MGF mgf) {
+        this(cipher, hash, mgf, null);
+    }
 
-        this.k0 = this.hashH.getDigestLength();
+    public OAEPPadding(
+            AsymmetricBlockCipher cipher,
+            MessageDigest hash,
+            MGF mgf,
+            byte[] label) {
+        this.engine = cipher;
+        this.mgf = mgf;
 
-        int gInputLength = hashG.getDigestLength();
+        hash.reset();
 
-        if (delegate.getInputBlockSize() - k0 != gInputLength) {
-            throw new IllegalArgumentException("Blocks length mismatch: "
-                    + (delegate.getInputBlockSize() - k0) + " and " + gInputLength);
+        if (label != null) {
+            hash.update(label);
         }
 
-        this.inputBlockLength = gInputLength - k1;
+        this.lHash = hash.digest();
+        this.hLen = lHash.length;
     }
 
     @Override
     public void init(boolean forEncryption, CipherParameters param) {
         this.forEncryption = forEncryption;
-
-        this.hashG.reset();
-        this.hashH.reset();
-
-        this.delegate.init(forEncryption, param);
+        this.engine.init(forEncryption, param);
     }
 
     @Override
@@ -70,46 +77,83 @@ public class OAEPPadding implements AsymmetricBlockCipher {
     }
 
     private byte[] encode(byte[] block, int offset, int length) {
-        EncryptionUtils.checkInputLength(inputBlockLength, length);
+        EncryptionUtils.checkInputLengthLTE(getInputBlockSize(), length);
 
-        byte[] x = new byte[hashG.getDigestLength()];
-        System.arraycopy(block, offset, x, 0, length);
+        final int k = engine.getInputBlockSize();
+        final int dbLen = k - hLen - 1;
 
-        byte[] y = randomBytes(k0);
+        byte[] em = new byte[k];
+        byte[] seed = randomBytes(hLen);
 
-        xor(x, resetAndHash(hashG, y));
-        xor(y, resetAndHash(hashH, x));
+        // 00, seed, DB = lHash | 00 ... 00 | 01 | M
+        System.arraycopy(lHash, 0, em, hLen + 1, hLen);
+        em[k - 1 - length] = 1;
+        System.arraycopy(block, offset, em, k - length, length);
 
-        byte[] paddedMessage = EncryptionUtils.concat(x, y);
+        //maskedDB = DB ^ MGF(seed)
+        xor(em, hLen + 1, mgf.mask(seed, dbLen), 0, dbLen);
 
-        return delegate.processBlock(paddedMessage, 0, paddedMessage.length);
+        //maskedSeed = seed ^ maskedDB
+        xor(seed, 0, mgf.mask(em, hLen + 1, dbLen, hLen), 0, hLen);
+        System.arraycopy(seed, 0, em, 1, hLen);
+
+        //EM = 00 | maskedSeed | maskedDB
+        return engine.processBlock(em, 0, em.length);
     }
 
     private byte[] decode(byte[] block, int offset, int length) {
+        byte[] decrypted = engine.processBlock(block, offset, length);
 
-        int leftPartLength = hashG.getDigestLength();
+        final int k = engine.getOutputBlockSize();
+        EncryptionUtils.checkInputLengthEQ(k, decrypted.length);
 
-        byte[] x = EncryptionUtils.slice(block, offset, leftPartLength);
-        byte[] y = EncryptionUtils.slice(block, offset + leftPartLength, k0);
+        final int dbLen = k - hLen - 1;
 
-        xor(y, resetAndHash(hashH, x));
-        xor(x, resetAndHash(hashG, y));
+        xor(decrypted, 1, mgf.mask(decrypted, hLen + 1, dbLen, hLen), 0, hLen);
+        xor(decrypted, hLen + 1, mgf.mask(decrypted, 1, hLen, dbLen), 0, dbLen);
 
-        checkZeroes(x);
+        if (decrypted[0] != 0) {
+            throw new IllegalStateException("First byte should be 0x00");
+        }
 
-        return delegate.processBlock(x, 0, inputBlockLength);
+        for (int i = 0; i < hLen; i++) {
+            if (lHash[i] != decrypted[hLen + 1 + i]) {
+                throw new IllegalStateException("Label hash mismatch the original value");
+            }
+        }
+
+        // find the position where real message starts. In other words - skip padding bytes.
+        int mPos;
+        for (mPos = 2 * hLen + 1; mPos < k; mPos++) {
+            if (decrypted[mPos] == 1) {
+                mPos += 1;
+                break;
+            }
+
+            if (decrypted[mPos] != 0) {
+                throw new IllegalArgumentException("Invalid padding");
+            }
+        }
+
+        return Arrays.copyOfRange(decrypted, mPos, k);
     }
 
     @Override
     public int getInputBlockSize() {
-        //TODO: take forEncryption flag into account
-        return inputBlockLength;
+        if (this.forEncryption) {
+            return engine.getInputBlockSize() - 2 * hLen - 2;
+        } else {
+            return engine.getInputBlockSize();
+        }
     }
 
     @Override
     public int getOutputBlockSize() {
-        //TODO: take forEncryption flag into account
-        return 0;
+        if (this.forEncryption) {
+            return engine.getOutputBlockSize();
+        } else {
+            return engine.getOutputBlockSize() - 2 * hLen - 2;
+        }
     }
 
     private byte[] randomBytes(int length) {
@@ -119,22 +163,13 @@ public class OAEPPadding implements AsymmetricBlockCipher {
         return randomBuffer;
     }
 
-    private void checkZeroes(byte[] x) {
-        for (int i = inputBlockLength; i < x.length; i++) {
-            if (x[i] != 0) {
-                throw new IllegalStateException("Malformed message");
-            }
-        }
-    }
-
-    private static byte[] resetAndHash(MessageDigest digest, byte[] input) {
-        digest.reset();
-        return digest.digest(input);
-    }
-
-    private static void xor(byte[] accumulator, byte[] bytes) {
-        for (int i = 0; i < accumulator.length; i++) {
-            accumulator[i] ^= bytes[i];
+    private static void xor(byte[] accumulator,
+                            int accOffset,
+                            byte[] bytes,
+                            int offset,
+                            int length) {
+        for (int i = 0; i < length; i++) {
+            accumulator[i + accOffset] ^= bytes[i + offset];
         }
     }
 }

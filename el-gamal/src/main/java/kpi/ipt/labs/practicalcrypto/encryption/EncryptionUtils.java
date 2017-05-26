@@ -25,7 +25,13 @@ public class EncryptionUtils {
         return result;
     }
 
-    public static void checkInputLength(int expected, int actual) {
+    public static void checkInputLengthEQ(int expected, int actual) {
+        if (expected != actual) {
+            throw new IllegalArgumentException("Input message has incorrect length");
+        }
+    }
+
+    public static void checkInputLengthLTE(int expected, int actual) {
         if (expected < actual) {
             throw new IllegalArgumentException("Input message too long");
         }

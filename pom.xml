@@ -17,7 +17,7 @@
 
     <properties>
         <jmh.version>1.17.5</jmh.version>
-        <bc.version>1.56</bc.version>
+        <bc.version>1.57</bc.version>
     </properties>
 
     <build>
