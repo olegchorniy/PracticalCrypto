@@ -27,14 +27,16 @@ public class EncryptionMain {
         MessageDigest md5 = DigestFactory.createMD5();
         MessageDigest sha1 = DigestFactory.createSHA1();
 
-        //AsymmetricBlockCipher cipher = new OAEPPadding(new NoOpCipher(50, 50), sha1, new MGF1(sha1), null);
+        //AsymmetricBlockCipher asymCipher = new OAEPPadding(new NoOpCipher(50, 50), sha1, new MGF1(sha1), null);
+        OAEPPadding asymCipher = new OAEPPadding(new ElGamalCipher());
+
         ElGamalKeyPair keyPair = KeyStore.getOrGenerateAndSave(513);
 
-        Cipher cipher = new Cipher(new OAEPPadding(new ElGamalCipher()));
+        Cipher cipher = new Cipher(asymCipher);
 
         byte[] block = {
-                1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16/*,
-                17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32*/
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+                17, 18, /*19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32*/
         };
 
         System.out.println(print(block));

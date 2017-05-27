@@ -49,9 +49,8 @@ public class Cipher {
 
         byte[] outputBuffer = new byte[outputLength];
 
-        doUpdate(input, offset, length, outputBuffer, 0);
-
-        return outputBuffer;
+        int bytesWritten = doUpdate(input, offset, length, outputBuffer, 0);
+        return EncryptionUtils.slice(outputBuffer, 0, bytesWritten);
     }
 
     public int update(byte[] input, int offset, int length,
@@ -75,17 +74,17 @@ public class Cipher {
             throw new IllegalStateException("Output buffer doesn't have enough space");
         }
 
-        doUpdate(input, offset, length, output, outputOffset);
-
-        return outputLength;
+        return doUpdate(input, offset, length, output, outputOffset);
     }
 
-    private void doUpdate(byte[] input, int offset, int length,
-                          byte[] output, int outputOffset) {
+    private int doUpdate(byte[] input, int offset, int length,
+                         byte[] output, int outputOffset) {
 
         final int inputBlockSize = engine.getInputBlockSize();
         final int totalInputLength = buffOffset + length;
         final int outputBlocks = totalInputLength / inputBlockSize;
+
+        int bytesWritten = 0;
 
         for (int i = 0; i < outputBlocks; i++) {
 
@@ -103,10 +102,13 @@ public class Cipher {
 
             System.arraycopy(processedBytes, 0, output, outputOffset, processedBytes.length);
             outputOffset += processedBytes.length;
+            bytesWritten += processedBytes.length;
         }
 
         int remainedBytes = totalInputLength - outputBlocks * inputBlockSize;
         copyToBuffer(input, offset, remainedBytes);
+
+        return bytesWritten;
     }
 
     private int fillBuffer(byte[] input, int offset) {
