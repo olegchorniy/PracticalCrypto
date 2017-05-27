@@ -6,19 +6,19 @@ public class Cipher {
 
     private static final byte[] EMPTY_BUFFER = new byte[0];
 
-    private final AsymmetricBlockCipher delegate;
+    private final AsymmetricBlockCipher engine;
 
     private final byte[] buff;
     private int buffOffset;
 
-    public Cipher(AsymmetricBlockCipher delegate) {
-        this.delegate = delegate;
-        this.buff = new byte[delegate.getInputBlockSize()];
+    public Cipher(AsymmetricBlockCipher engine) {
+        this.engine = engine;
+        this.buff = new byte[engine.getInputBlockSize()];
     }
 
     public byte[] update(byte[] input, int offset, int length) {
-        final int inputBlockSize = delegate.getInputBlockSize();
-        final int outputBlockSize = delegate.getOutputBlockSize();
+        final int inputBlockSize = engine.getInputBlockSize();
+        final int outputBlockSize = engine.getOutputBlockSize();
 
         final int totalInputLen = length + buffOffset;
 
@@ -41,8 +41,8 @@ public class Cipher {
     public int update(byte[] input, int offset, int length,
                       byte[] output, int outputOffset) {
 
-        final int inputBlockSize = delegate.getInputBlockSize();
-        final int outputBlockSize = delegate.getOutputBlockSize();
+        final int inputBlockSize = engine.getInputBlockSize();
+        final int outputBlockSize = engine.getOutputBlockSize();
 
         final int totalInputLen = length + buffOffset;
 
@@ -67,7 +67,7 @@ public class Cipher {
     private void doUpdate(byte[] input, int offset, int length,
                           byte[] output, int outputOffset) {
 
-        final int inputBlockSize = delegate.getInputBlockSize();
+        final int inputBlockSize = engine.getInputBlockSize();
         final int totalInputLength = buffOffset + length;
         final int outputBlocks = totalInputLength / inputBlockSize;
 
@@ -77,11 +77,11 @@ public class Cipher {
 
             if (buffOffset != 0) {
                 offset += fillBuffer(input, offset);
-                processedBytes = delegate.processBlock(buff, 0, buff.length);
+                processedBytes = engine.processBlock(buff, 0, buff.length);
 
                 cleanBuffer();
             } else {
-                processedBytes = delegate.processBlock(input, offset, inputBlockSize);
+                processedBytes = engine.processBlock(input, offset, inputBlockSize);
                 offset += inputBlockSize;
             }
 
@@ -94,7 +94,7 @@ public class Cipher {
     }
 
     private int fillBuffer(byte[] input, int offset) {
-        int bytesToCopy = delegate.getInputBlockSize() - buffOffset;
+        int bytesToCopy = engine.getInputBlockSize() - buffOffset;
         copyToBuffer(input, offset, bytesToCopy);
 
         return bytesToCopy;
@@ -111,6 +111,11 @@ public class Cipher {
     }
 
     public byte[] doFinal() {
-        return null;
+
+        if (buffOffset == 0) {
+            return EMPTY_BUFFER;
+        }
+
+        return engine.processBlock(buff, 0, buffOffset);
     }
 }

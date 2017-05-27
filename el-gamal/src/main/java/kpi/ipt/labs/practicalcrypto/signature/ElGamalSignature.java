@@ -71,7 +71,7 @@ public class ElGamalSignature {
         //s = k^(-1) * (h(m) - x * r) mod (p - 1)
         BigInteger s = k.modInverse(pMinusOne).multiply(h.subtract(x.multiply(r))).mod(pMinusOne);
 
-        return packToByteArray(r, s);
+        return ConversionUtil.packToByteArray(r, s);
     }
 
     public boolean verify(byte[] signature) {
@@ -84,7 +84,7 @@ public class ElGamalSignature {
         byte[] digest = this.digest.digest();
         BigInteger h = ConversionUtil.fromUnsignedByteArray(trimToLength(digest, p));
 
-        BigInteger[] sig = unpackFromByteArray(signature);
+        BigInteger[] sig = ConversionUtil.unpackFromByteArray(signature);
         BigInteger r = sig[0];
         BigInteger s = sig[1];
 
@@ -109,38 +109,6 @@ public class ElGamalSignature {
         System.arraycopy(array, 0, trimmed, 0, byteLength);
 
         return trimmed;
-    }
-
-    private static byte[] packToByteArray(BigInteger r, BigInteger s) {
-        byte[] rArray = ConversionUtil.asUnsignedByteArray(r);
-        byte[] sArray = ConversionUtil.asUnsignedByteArray(s);
-
-        int maxLength = Integer.max(rArray.length, sArray.length);
-
-        byte[] targetArray = new byte[maxLength * 2];
-        System.arraycopy(rArray, 0, targetArray, 0, rArray.length);
-        System.arraycopy(sArray, 0, targetArray, maxLength, sArray.length);
-
-        return targetArray;
-    }
-
-    private static BigInteger[] unpackFromByteArray(byte[] array) {
-        if ((array.length & 1) != 0) {
-            throw new IllegalArgumentException("Signature array should have even length");
-        }
-
-        int halfLen = array.length / 2;
-
-        byte[] rArray = new byte[halfLen];
-        byte[] sArray = new byte[halfLen];
-
-        System.arraycopy(array, 0, rArray, 0, halfLen);
-        System.arraycopy(array, halfLen, sArray, 0, halfLen);
-
-        BigInteger r = ConversionUtil.fromUnsignedByteArray(rArray);
-        BigInteger s = ConversionUtil.fromUnsignedByteArray(sArray);
-
-        return new BigInteger[]{r, s};
     }
 
     private static BigInteger selectK(BigInteger pMinusOne, Random random) {

@@ -14,6 +14,10 @@ public class ElGamalKeyGenerator {
 
     private final Random random;
 
+    public ElGamalKeyGenerator() {
+        this(new Random());
+    }
+
     public ElGamalKeyGenerator(Random random) {
         this.random = random;
     }
