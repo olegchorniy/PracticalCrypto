@@ -8,12 +8,20 @@ public class Cipher {
 
     private final AsymmetricBlockCipher engine;
 
-    private final byte[] buff;
+    private byte[] buff;
     private int buffOffset;
 
     public Cipher(AsymmetricBlockCipher engine) {
         this.engine = engine;
-        this.buff = new byte[engine.getInputBlockSize()];
+    }
+
+    public void init(boolean forEncryption, CipherParameters parameters) {
+        this.engine.init(forEncryption, parameters);
+        this.buff = new byte[this.engine.getInputBlockSize()];
+    }
+
+    public byte[] update(byte[] input) {
+        return update(input, 0, input.length);
     }
 
     public byte[] update(byte[] input, int offset, int length) {
@@ -116,6 +124,9 @@ public class Cipher {
             return EMPTY_BUFFER;
         }
 
-        return engine.processBlock(buff, 0, buffOffset);
+        byte[] finalBlock = engine.processBlock(buff, 0, buffOffset);
+        buffOffset = 0;
+
+        return finalBlock;
     }
 }

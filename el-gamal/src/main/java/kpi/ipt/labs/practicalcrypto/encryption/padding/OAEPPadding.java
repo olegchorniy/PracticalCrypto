@@ -65,6 +65,21 @@ public class OAEPPadding implements AsymmetricBlockCipher {
     public void init(boolean forEncryption, CipherParameters param) {
         this.forEncryption = forEncryption;
         this.engine.init(forEncryption, param);
+
+        checkEngineInputLength();
+    }
+
+    private void checkEngineInputLength() {
+        if (this.forEncryption && this.getInputBlockSize() < 0) {
+            throw new IllegalStateException("Size of input block of supplied engine" +
+                    " is less than necessary for using it with the OAEP scheme");
+        }
+
+        if (!this.forEncryption && this.getOutputBlockSize() < 0) {
+            throw new IllegalStateException("Size of output block of supplied engine" +
+                    " is less than necessary for using it with the OAEP scheme");
+
+        }
     }
 
     @Override
