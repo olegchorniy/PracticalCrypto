@@ -20,6 +20,14 @@ public class Cipher {
         this.buff = new byte[this.engine.getInputBlockSize()];
     }
 
+    public int getInputBlockSize() {
+        return engine.getInputBlockSize();
+    }
+
+    public int getOutputBlockSize() {
+        return engine.getOutputBlockSize();
+    }
+
     public byte[] update(byte[] input) {
         return update(input, 0, input.length);
     }

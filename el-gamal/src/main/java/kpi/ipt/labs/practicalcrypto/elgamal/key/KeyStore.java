@@ -10,6 +10,19 @@ public class KeyStore {
 
     private static final Path keyPath = Paths.get("D:", "work_dir", "pract_crypt", "key.bin");
 
+    public static ElGamalKeyPair getOrGenerateAndSave(int bitLength) throws IOException {
+        if (!Files.exists(keyPath)) {
+            return generateAndSave(bitLength);
+        }
+
+        ElGamalKeyPair keyPair = getKeyPair();
+        if (keyPair.getPublicKey().getP().bitLength() == bitLength) {
+            return keyPair;
+        }
+
+        return generateAndSave(bitLength);
+    }
+
     public static ElGamalKeyPair generateAndSave(int bitLength) throws IOException {
         Random random = new Random();
 

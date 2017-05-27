@@ -116,23 +116,27 @@ public class OAEPPadding implements AsymmetricBlockCipher {
         return engine.processBlock(em, 0, em.length);
     }
 
-    private byte[] decode(byte[] block, int offset, int length) {
-        byte[] decrypted = engine.processBlock(block, offset, length);
+    private byte[] decode(byte[] input, int offset, int length) {
+        byte[] decrypted = engine.processBlock(input, offset, length);
 
         final int k = engine.getOutputBlockSize();
-        EncryptionUtils.checkInputLengthEQ(k, decrypted.length);
+        EncryptionUtils.checkInputLengthLTE(k, decrypted.length);
+
+        //we need to extend block with leading zeros to necessary length
+        byte[] block = new byte[engine.getOutputBlockSize()];
+        System.arraycopy(decrypted, 0, block, block.length - decrypted.length, decrypted.length);
 
         final int dbLen = k - hLen - 1;
 
-        xor(decrypted, 1, mgf.mask(decrypted, hLen + 1, dbLen, hLen), 0, hLen);
-        xor(decrypted, hLen + 1, mgf.mask(decrypted, 1, hLen, dbLen), 0, dbLen);
+        xor(block, 1, mgf.mask(block, hLen + 1, dbLen, hLen), 0, hLen);
+        xor(block, hLen + 1, mgf.mask(block, 1, hLen, dbLen), 0, dbLen);
 
-        if (decrypted[0] != 0) {
+        if (block[0] != 0) {
             throw new IllegalStateException("First byte should be 0x00");
         }
 
         for (int i = 0; i < hLen; i++) {
-            if (lHash[i] != decrypted[hLen + 1 + i]) {
+            if (lHash[i] != block[hLen + 1 + i]) {
                 throw new IllegalStateException("Label hash mismatch the original value");
             }
         }
@@ -140,17 +144,17 @@ public class OAEPPadding implements AsymmetricBlockCipher {
         // find the position where real message starts. In other words - skip padding bytes.
         int mPos;
         for (mPos = 2 * hLen + 1; mPos < k; mPos++) {
-            if (decrypted[mPos] == 1) {
+            if (block[mPos] == 1) {
                 mPos += 1;
                 break;
             }
 
-            if (decrypted[mPos] != 0) {
+            if (block[mPos] != 0) {
                 throw new IllegalArgumentException("Invalid padding");
             }
         }
 
-        return Arrays.copyOfRange(decrypted, mPos, k);
+        return Arrays.copyOfRange(block, mPos, k);
     }
 
     @Override
