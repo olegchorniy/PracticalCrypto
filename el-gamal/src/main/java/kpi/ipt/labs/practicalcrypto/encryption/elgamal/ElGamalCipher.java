@@ -10,7 +10,6 @@ import kpi.ipt.labs.practicalcrypto.utils.ConversionUtil;
 import kpi.ipt.labs.practicalcrypto.utils.RandomUtils;
 
 import java.math.BigInteger;
-import java.util.Arrays;
 import java.util.Random;
 
 import static java.math.BigInteger.ONE;
@@ -62,9 +61,7 @@ public class ElGamalCipher implements AsymmetricBlockCipher {
             throw new IllegalArgumentException("Input block too large for current ElGamal parameters");
         }
 
-        byte[] input = copyIfNecessary(block, offset, length);
-
-        BigInteger m = ConversionUtil.fromUnsignedByteArray(input);
+        BigInteger m = ConversionUtil.fromUnsignedByteArray(block, offset, length);
         BigInteger[] cipherText = encrypt((ElGamalPublicKey) key, m);
 
         return ConversionUtil.packToByteArray(cipherText[0], cipherText[1], getOutputBlockSize());
@@ -125,13 +122,5 @@ public class ElGamalCipher implements AsymmetricBlockCipher {
         }
 
         return (bitSize - 1) / 8;
-    }
-
-    private static byte[] copyIfNecessary(byte[] block, int offset, int length) {
-        if (offset == 0 && length == block.length) {
-            return block;
-        }
-
-        return Arrays.copyOfRange(block, offset, offset + length);
     }
 }

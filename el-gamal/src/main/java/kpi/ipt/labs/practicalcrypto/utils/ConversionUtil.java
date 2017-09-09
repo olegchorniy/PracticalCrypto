@@ -1,6 +1,7 @@
 package kpi.ipt.labs.practicalcrypto.utils;
 
 import java.math.BigInteger;
+import java.util.Arrays;
 
 /**
  * BigInteger to/from byte array conversion utilities.
@@ -21,6 +22,18 @@ public abstract class ConversionUtil {
         System.arraycopy(secondArray, 0, targetArray, maxLength, secondArray.length);
 
         return targetArray;
+    }
+
+    public static byte[] packToByteArray(BigInteger value, int targetLength) {
+        byte[] bytes = asUnsignedByteArray(value);
+        if (bytes.length == targetLength) {
+            return bytes;
+        }
+
+        byte[] paddedBytes = new byte[targetLength];
+        System.arraycopy(bytes, 0, paddedBytes, targetLength - bytes.length, bytes.length);
+
+        return paddedBytes;
     }
 
     public static byte[] packToByteArray(BigInteger first, BigInteger second, int targetLength) {
@@ -71,6 +84,18 @@ public abstract class ConversionUtil {
         }
 
         return bytes;
+    }
+
+    public static byte[] slice(byte[] block, int offset, int length) {
+        if (offset == 0 && length == block.length) {
+            return block;
+        }
+
+        return Arrays.copyOfRange(block, offset, offset + length);
+    }
+
+    public static BigInteger fromUnsignedByteArray(byte[] buf, int offset, int length) {
+        return fromUnsignedByteArray(slice(buf, offset, length));
     }
 
     public static BigInteger fromUnsignedByteArray(byte[] buf) {

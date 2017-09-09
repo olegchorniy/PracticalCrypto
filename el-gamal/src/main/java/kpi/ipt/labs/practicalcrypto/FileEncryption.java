@@ -2,10 +2,16 @@ package kpi.ipt.labs.practicalcrypto;
 
 import kpi.ipt.labs.practicalcrypto.elgamal.key.ElGamalKeyPair;
 import kpi.ipt.labs.practicalcrypto.elgamal.key.KeyStore;
+import kpi.ipt.labs.practicalcrypto.encryption.AsymmetricBlockCipher;
 import kpi.ipt.labs.practicalcrypto.encryption.Cipher;
+import kpi.ipt.labs.practicalcrypto.encryption.CipherParameters;
 import kpi.ipt.labs.practicalcrypto.encryption.elgamal.ElGamalCipher;
 import kpi.ipt.labs.practicalcrypto.encryption.elgamal.ElGamalCipherParameters;
 import kpi.ipt.labs.practicalcrypto.encryption.padding.OAEPPadding;
+import kpi.ipt.labs.practicalcrypto.encryption.rsa.RSACipher;
+import kpi.ipt.labs.practicalcrypto.encryption.rsa.RSACipherParameters;
+import kpi.ipt.labs.practicalcrypto.rsa.key.RSAKeyGenerator;
+import kpi.ipt.labs.practicalcrypto.rsa.key.RSAKeyPair;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,28 +27,55 @@ public class FileEncryption {
     private static final Path TEST_FILE = WORKING_DIR.resolve("test_file.bin");
 
     public static void main(String[] args) throws IOException {
+        rsaTest();
+    }
 
+    public static void rsaTest() throws IOException {
+        RSAKeyPair keyPair = new RSAKeyGenerator().generateKeyPair(513);
+
+        encryptionTest(
+                new RSACipher(),
+                new RSACipherParameters(keyPair.getPublicKey()),
+                new RSACipherParameters(keyPair.getPrivateKey())
+        );
+    }
+
+    public static void elGamalTest() throws IOException {
         ElGamalKeyPair keyPair = KeyStore.getOrGenerateAndSave(513);
-        Cipher cipher = new Cipher(new OAEPPadding(new ElGamalCipher()));
 
-        System.out.println("Started at " + new Date());
+        encryptionTest(
+                new ElGamalCipher(),
+                new ElGamalCipherParameters(keyPair.getPublicKey()),
+                new ElGamalCipherParameters(keyPair.getPrivateKey())
+        );
+    }
+
+    public static void encryptionTest(AsymmetricBlockCipher baseCipher,
+                                      CipherParameters encParams,
+                                      CipherParameters decParams) throws IOException {
+
+        String tmpFilePrefix = baseCipher.getClass().getSimpleName();
+
+        Cipher cipher = new Cipher(new OAEPPadding(baseCipher));
+
+        System.out.println("Started at: " + new Date());
 
         // 1. Encrypt
-        cipher.init(true, new ElGamalCipherParameters(keyPair.getPublicKey()));
+        cipher.init(true, encParams);
 
-        Path encryptTemp = Files.createTempFile(WORKING_DIR, "el-gamal-enc-", ".tmp");
+        Path encryptTemp = Files.createTempFile(WORKING_DIR, tmpFilePrefix + "-enc-", ".tmp");
 
         try (InputStream in = Files.newInputStream(TEST_FILE);
              OutputStream out = Files.newOutputStream(encryptTemp)) {
             process(in, out, cipher);
         }
 
-        System.out.println("Encrypted at " + new Date());
+        System.out.println("Encrypted at: " + new Date());
 
         // 2. Decrypt
-        cipher.init(false, new ElGamalCipherParameters(keyPair.getPrivateKey()));
+        cipher.init(false, decParams);
 
-        Path decryptTemp = Files.createTempFile(WORKING_DIR, "el-gamal-dec-", ".tmp");
+        Path decryptTemp = Files.createTempFile(WORKING_DIR, tmpFilePrefix + "-dec-", ".tmp");
 
         try (InputStream in = Files.newInputStream(encryptTemp);
              OutputStream out = Files.newOutputStream(decryptTemp)) {
